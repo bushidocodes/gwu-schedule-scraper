@@ -1,0 +1,2204 @@
+[
+  {
+    "crn": 12906,
+    "department": "CSCI",
+    "courseID": 1011,
+    "section": "10",
+    "name": "Introduction to Programming with Java",
+    "credit": "3.00",
+    "instructor": "Vidrine, C",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15585,
+    "department": "CSCI",
+    "courseID": 1012,
+    "section": "10",
+    "name": "Introduction to Programming with Python",
+    "credit": "3.00",
+    "instructor": "Taylor, J",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "03:45PM",
+        "endTime": "05:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15818,
+    "department": "CSCI",
+    "courseID": 1012,
+    "section": "11",
+    "name": "Introduction to Programming with Python",
+    "credit": "3.00",
+    "instructor": "",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "05:10PM",
+        "endTime": "07:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11001,
+    "department": "CSCI",
+    "courseID": 1022,
+    "section": "10",
+    "name": "Introduction to Internet Technology",
+    "credit": "3.00",
+    "instructor": "Vidrine, E",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11051,
+    "department": "CSCI",
+    "courseID": 1023,
+    "section": "10",
+    "name": "Introduction to Web Software Development",
+    "credit": "3.00",
+    "instructor": "Brenner, N",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11537,
+    "department": "CSCI",
+    "courseID": 1111,
+    "section": "10",
+    "name": "Introduction to Software Development",
+    "credit": "3.00",
+    "instructor": "Frank Bolton, P",
+    "schedule": [
+      {
+        "location": "",
+        "day": "T",
+        "startTime": "11:10AM",
+        "endTime": "12:25PM"
+      },
+      {
+        "location": "",
+        "day": "R",
+        "startTime": "11:10AM",
+        "endTime": "12:25PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11161,
+    "department": "CSCI",
+    "courseID": 1112,
+    "section": "10",
+    "name": "Algorithms and Data Structures",
+    "credit": "3.00",
+    "instructor": "",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10895,
+    "department": "CSCI",
+    "courseID": 1311,
+    "section": "10",
+    "name": "Discrete Structures I",
+    "credit": "3.00",
+    "instructor": "Youssef, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "03:45PM",
+        "endTime": "05:00PM"
+      },
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "03:45PM",
+        "endTime": "05:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11228,
+    "department": "CSCI",
+    "courseID": 2113,
+    "section": "10",
+    "name": "Software Engineering",
+    "credit": "3.00",
+    "instructor": "Leontie, R",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "11:10AM",
+        "endTime": "12:25PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 17191,
+    "department": "CSCI",
+    "courseID": 2441,
+    "section": "10",
+    "name": "Database Systems and Team Projects",
+    "credit": "3.00",
+    "instructor": "He, L",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 12901,
+    "department": "CSCI",
+    "courseID": 2461,
+    "section": "10",
+    "name": "Computer Architecture I",
+    "credit": "3.00",
+    "instructor": "He, L",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 14844,
+    "department": "CSCI",
+    "courseID": 2541,
+    "section": "10",
+    "name": "Database Systems and Team Projects",
+    "credit": "3.00",
+    "instructor": "Wood, T",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "12:45PM",
+        "endTime": "02:00PM"
+      },
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "12:45PM",
+        "endTime": "02:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15586,
+    "department": "CSCI",
+    "courseID": 2541,
+    "section": "11",
+    "name": "Database Systems and Team Projects",
+    "credit": "3.00",
+    "instructor": "Leontie, R",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "12:45PM",
+        "endTime": "02:00PM"
+      },
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "12:45PM",
+        "endTime": "02:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16447,
+    "department": "CSCI",
+    "courseID": 2541,
+    "section": "12",
+    "name": "Database Systems and Team Projects",
+    "credit": "3.00",
+    "instructor": "Leontie, R",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "12:45PM",
+        "endTime": "02:00PM"
+      },
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "12:45PM",
+        "endTime": "02:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18562,
+    "department": "CSCI",
+    "courseID": 3313,
+    "section": "30",
+    "name": "Foundations of Computing",
+    "credit": "0.00",
+    "instructor": "Narahari, B",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "09:35PM",
+        "endTime": "10:50PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18563,
+    "department": "CSCI",
+    "courseID": 3313,
+    "section": "31",
+    "name": "Foundations of Computing",
+    "credit": "0.00",
+    "instructor": "Narahari, B",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "09:35PM",
+        "endTime": "10:50PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 12534,
+    "department": "CSCI",
+    "courseID": 3410,
+    "section": "10",
+    "name": "Systems Programming",
+    "credit": "3.00",
+    "instructor": "Narahari, B",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "10:00AM",
+        "endTime": "11:15AM"
+      },
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "10:00AM",
+        "endTime": "11:15AM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13970,
+    "department": "CSCI",
+    "courseID": 3907,
+    "section": "80",
+    "name": "Big Data & Analytics",
+    "credit": "3.00",
+    "instructor": "Kaisler, S",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15082,
+    "department": "CSCI",
+    "courseID": 3907,
+    "section": "82",
+    "name": "Blockchain Fundamentals",
+    "credit": "3.00",
+    "instructor": "Wasserman, N",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "03:30PM",
+        "endTime": "06:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15591,
+    "department": "CSCI",
+    "courseID": 3907,
+    "section": "83",
+    "name": "Advanced Cryptography",
+    "credit": "3.00",
+    "instructor": "Yerukhimovich, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "12:45PM",
+        "endTime": "03:15PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16448,
+    "department": "CSCI",
+    "courseID": 3907,
+    "section": "85",
+    "name": "Augmented and Virtual Reality",
+    "credit": "3.00",
+    "instructor": "Ok, H",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "03:30PM",
+        "endTime": "06:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16449,
+    "department": "CSCI",
+    "courseID": 3907,
+    "section": "87",
+    "name": "Big Data & Analytics",
+    "credit": "3.00",
+    "instructor": "Long, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10900,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "10",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Pless, R",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 12557,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "11",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Simha, R",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 14440,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "12",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Aviv, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13034,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "13",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Arora, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13035,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "14",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Yerukhimovich, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13036,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "15",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Caliskan, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13037,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "16",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Hahn, J",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13038,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "17",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Youssef, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13039,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "18",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Narahari, B",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13040,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "19",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Parmer, G",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13041,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "20",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Vora, P",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13042,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "21",
+    "name": "Research",
+    "credit": "1.00 TO   3.00",
+    "instructor": "Wood, T",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18559,
+    "department": "CSCI",
+    "courseID": 3908,
+    "section": "22",
+    "name": "Research",
+    "credit": "1.00",
+    "instructor": "Arora, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 12542,
+    "department": "CSCI",
+    "courseID": 4223,
+    "section": "80",
+    "name": "Principles of Programming Languages",
+    "credit": "3.00",
+    "instructor": "Bellaachia, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "F",
+        "startTime": "09:30AM",
+        "endTime": "12:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15817,
+    "department": "CSCI",
+    "courseID": 4237,
+    "section": "10",
+    "name": "Software Design for Handheld Devices",
+    "credit": "3.00",
+    "instructor": "Capurso, N",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11912,
+    "department": "CSCI",
+    "courseID": 4244,
+    "section": "10",
+    "name": "Capstone Design Project II",
+    "credit": "4.00",
+    "instructor": "Simha, R; Frank Bolton, P",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "02:00PM",
+        "endTime": "03:15PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 17150,
+    "department": "CSCI",
+    "courseID": 4364,
+    "section": "10",
+    "name": "Machine Learning",
+    "credit": "3.00",
+    "instructor": "Hamidian, S",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "F",
+        "startTime": "04:10PM",
+        "endTime": "06:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15596,
+    "department": "CSCI",
+    "courseID": 4364,
+    "section": "81",
+    "name": "Machine Learning",
+    "credit": "3.00",
+    "instructor": "Trott, D",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13651,
+    "department": "CSCI",
+    "courseID": 4417,
+    "section": "10",
+    "name": "UNIX System Programming",
+    "credit": "3.00",
+    "instructor": "Fernandez, R",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "F",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 17154,
+    "department": "CSCI",
+    "courseID": 4455,
+    "section": "10",
+    "name": "Computer Game Design and Programming",
+    "credit": "3.00",
+    "instructor": "Byun, J",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13524,
+    "department": "CSCI",
+    "courseID": 4511,
+    "section": "80",
+    "name": "Artificial Intelligence Algorithms",
+    "credit": "3.00",
+    "instructor": "Arora, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "F",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 12738,
+    "department": "CSCI",
+    "courseID": 4531,
+    "section": "80",
+    "name": "Computer Security",
+    "credit": "3.00",
+    "instructor": "Refaei, M",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "F",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11295,
+    "department": "CSCI",
+    "courseID": 4541,
+    "section": "80",
+    "name": "Network Security",
+    "credit": "3.00",
+    "instructor": "Refaei, M",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11355,
+    "department": "CSCI",
+    "courseID": 4551,
+    "section": "10",
+    "name": "Concepts and Applications of Computer Graphics",
+    "credit": "3.00",
+    "instructor": "Rozario, P",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 12975,
+    "department": "CSCI",
+    "courseID": 4554,
+    "section": "10",
+    "name": "Computer Graphics I",
+    "credit": "3.00",
+    "instructor": "Adhami, L",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18558,
+    "department": "CSCI",
+    "courseID": 6010,
+    "section": "10",
+    "name": "Introduction to Computer Science Fundamentals",
+    "credit": "3.00",
+    "instructor": "Shaban, H",
+    "schedule": [
+      {
+        "location": "",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13464,
+    "department": "CSCI",
+    "courseID": 6011,
+    "section": "O10",
+    "name": "Introduction to Computer Systems",
+    "credit": "3.00",
+    "instructor": "Draganova, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16585,
+    "department": "CSCI",
+    "courseID": 6212,
+    "section": "10",
+    "name": "Design and Analysis of Algorithms",
+    "credit": "3.00",
+    "instructor": "Choi, H",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "03:30PM",
+        "endTime": "06:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13403,
+    "department": "CSCI",
+    "courseID": 6212,
+    "section": "11",
+    "name": "Design and Analysis of Algorithms",
+    "credit": "3.00",
+    "instructor": "",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10897,
+    "department": "CSCI",
+    "courseID": 6221,
+    "section": "O10",
+    "name": "Advanced Software Paradigms",
+    "credit": "3.00",
+    "instructor": "Hwang, Y",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 12543,
+    "department": "CSCI",
+    "courseID": 6223,
+    "section": "80",
+    "name": "Principles of Programming Languages",
+    "credit": "3.00",
+    "instructor": "Bellaachia, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "F",
+        "startTime": "09:30AM",
+        "endTime": "12:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11346,
+    "department": "CSCI",
+    "courseID": 6231,
+    "section": "10",
+    "name": "Software Engineering",
+    "credit": "3.00",
+    "instructor": "Kaisler, S",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "12:10PM",
+        "endTime": "02:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10898,
+    "department": "CSCI",
+    "courseID": 6234,
+    "section": "10",
+    "name": "Object-Oriented Design",
+    "credit": "3.00",
+    "instructor": "Melo, W",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13430,
+    "department": "CSCI",
+    "courseID": 6234,
+    "section": "11",
+    "name": "Object-Oriented Design",
+    "credit": "3.00",
+    "instructor": "Lancaster, M",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15069,
+    "department": "CSCI",
+    "courseID": 6311,
+    "section": "10",
+    "name": "Theory of Computation",
+    "credit": "3.00",
+    "instructor": "Roberts, D",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 17171,
+    "department": "CSCI",
+    "courseID": 6364,
+    "section": "10",
+    "name": "Machine Learning",
+    "credit": "3.00",
+    "instructor": "Hamidian, S",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "F",
+        "startTime": "04:10PM",
+        "endTime": "06:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15597,
+    "department": "CSCI",
+    "courseID": 6364,
+    "section": "81",
+    "name": "Machine Learning",
+    "credit": "3.00",
+    "instructor": "Trott, D",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18543,
+    "department": "CSCI",
+    "courseID": 6411,
+    "section": "10",
+    "name": "Advanced Operating Systems",
+    "credit": "3.00",
+    "instructor": "Parmer, G",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "12:45PM",
+        "endTime": "02:00PM"
+      },
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "12:45PM",
+        "endTime": "02:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16452,
+    "department": "CSCI",
+    "courseID": 6441,
+    "section": "10",
+    "name": "Database Management Systems",
+    "credit": "3.00",
+    "instructor": "Fernandez, R",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18544,
+    "department": "CSCI",
+    "courseID": 6441,
+    "section": "11",
+    "name": "Database Management Systems",
+    "credit": "3.00",
+    "instructor": "Roberts, D",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11913,
+    "department": "CSCI",
+    "courseID": 6443,
+    "section": "10",
+    "name": "Data Mining",
+    "credit": "3.00",
+    "instructor": "Bellaachia, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 14363,
+    "department": "CSCI",
+    "courseID": 6444,
+    "section": "80",
+    "name": "Introduction to Big Data and Analytics",
+    "credit": "3.00",
+    "instructor": "Kaisler, S",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15027,
+    "department": "CSCI",
+    "courseID": 6444,
+    "section": "81",
+    "name": "Introduction to Big Data and Analytics",
+    "credit": "3.00",
+    "instructor": "Long, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18475,
+    "department": "CSCI",
+    "courseID": 6444,
+    "section": "82",
+    "name": "Introduction to Big Data and Analytics",
+    "credit": "3.00",
+    "instructor": "Kaisler, S",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18545,
+    "department": "CSCI",
+    "courseID": 6444,
+    "section": "83",
+    "name": "Introduction to Big Data and Analytics",
+    "credit": "3.00",
+    "instructor": "Kaisler, S",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "08:00PM",
+        "endTime": "10:30PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18546,
+    "department": "CSCI",
+    "courseID": 6444,
+    "section": "84",
+    "name": "Introduction to Big Data and Analytics",
+    "credit": "3.00",
+    "instructor": "Kaisler, S",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "M",
+        "startTime": "08:00PM",
+        "endTime": "10:30PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10896,
+    "department": "CSCI",
+    "courseID": 6451,
+    "section": "10",
+    "name": "Information Retrieval Systems",
+    "credit": "3.00",
+    "instructor": "Kowalski, G",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18476,
+    "department": "CSCI",
+    "courseID": 6451,
+    "section": "80",
+    "name": "Information Retrieval Systems",
+    "credit": "3.00",
+    "instructor": "Kowalski, G",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18547,
+    "department": "CSCI",
+    "courseID": 6451,
+    "section": "81",
+    "name": "Information Retrieval Systems",
+    "credit": "3.00",
+    "instructor": "Kowalski, G",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "08:00PM",
+        "endTime": "10:30PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18548,
+    "department": "CSCI",
+    "courseID": 6451,
+    "section": "82",
+    "name": "Information Retrieval Systems",
+    "credit": "3.00",
+    "instructor": "Kowalski, G",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "08:00PM",
+        "endTime": "10:30PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10926,
+    "department": "CSCI",
+    "courseID": 6461,
+    "section": "O10",
+    "name": "Computer System Architecture",
+    "credit": "3.00",
+    "instructor": "Hanson, T",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13255,
+    "department": "CSCI",
+    "courseID": 6461,
+    "section": "O11",
+    "name": "Computer System Architecture",
+    "credit": "3.00",
+    "instructor": "Lancaster, M",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 13512,
+    "department": "CSCI",
+    "courseID": 6511,
+    "section": "80",
+    "name": "Artificial Intelligence",
+    "credit": "3.00",
+    "instructor": "Arora, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "F",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18477,
+    "department": "CSCI",
+    "courseID": 6511,
+    "section": "81",
+    "name": "Artificial Intelligence",
+    "credit": "3.00",
+    "instructor": "Arora, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "F",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18549,
+    "department": "CSCI",
+    "courseID": 6511,
+    "section": "82",
+    "name": "Artificial Intelligence",
+    "credit": "3.00",
+    "instructor": "Arora, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "08:00PM",
+        "endTime": "10:30PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18550,
+    "department": "CSCI",
+    "courseID": 6511,
+    "section": "83",
+    "name": "Artificial Intelligence",
+    "credit": "3.00",
+    "instructor": "Arora, A",
+    "schedule": [
+      {
+        "location": "",
+        "day": "T",
+        "startTime": "08:00PM",
+        "endTime": "10:30PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 12605,
+    "department": "CSCI",
+    "courseID": 6531,
+    "section": "80",
+    "name": "Computer Security",
+    "credit": "3.00",
+    "instructor": "Refaei, M",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "F",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11300,
+    "department": "CSCI",
+    "courseID": 6541,
+    "section": "80",
+    "name": "Network Security",
+    "credit": "3.00",
+    "instructor": "Refaei, M",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15090,
+    "department": "CSCI",
+    "courseID": 6548,
+    "section": "10",
+    "name": "E-Commerce Security",
+    "credit": "3.00",
+    "instructor": "Ok, H",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "03:30PM",
+        "endTime": "06:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11914,
+    "department": "CSCI",
+    "courseID": 6554,
+    "section": "10",
+    "name": "Computer Graphics II",
+    "credit": "3.00",
+    "instructor": "Hahn, J",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15598,
+    "department": "CSCI",
+    "courseID": 6562,
+    "section": "10",
+    "name": "Design of Interactive Multimedia",
+    "credit": "3.00",
+    "instructor": "Nicolas, E",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15083,
+    "department": "CSCI",
+    "courseID": 6907,
+    "section": "82",
+    "name": "Blockchain Fundamentals",
+    "credit": "3.00",
+    "instructor": "Wasserman, N",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "03:30PM",
+        "endTime": "06:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15592,
+    "department": "CSCI",
+    "courseID": 6907,
+    "section": "83",
+    "name": "Advanced Cryptography",
+    "credit": "3.00",
+    "instructor": "Yerukhimovich, A",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "W",
+        "startTime": "12:45PM",
+        "endTime": "03:15PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16454,
+    "department": "CSCI",
+    "courseID": 6907,
+    "section": "85",
+    "name": "Augmented and Virtual Reality",
+    "credit": "3.00",
+    "instructor": "Ok, H",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "R",
+        "startTime": "03:30PM",
+        "endTime": "06:00PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 18566,
+    "department": "CSCI",
+    "courseID": 6907,
+    "section": "87",
+    "name": "Data Mgt Sys for DataAnalytics",
+    "credit": "3.00",
+    "instructor": "Klein, J",
+    "schedule": [
+      {
+        "location": "REMOTE INSTR",
+        "day": "T",
+        "startTime": "06:10PM",
+        "endTime": "08:40PM"
+      }
+    ],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10901,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "10",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Pless, R",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11818,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "11",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Vora, P",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 14439,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "12",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Youssef, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11809,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "13",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Arora, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15898,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "14",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Huang, H",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11816,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "16",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Wood, T",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11811,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "17",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Hahn, J",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11812,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "18",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Aviv, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11813,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "19",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Yerukhimovich, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11814,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "20",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Narahari, B",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 12225,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "21",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Caliskan, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11815,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "22",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Parmer, G",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11817,
+    "department": "CSCI",
+    "courseID": 6908,
+    "section": "23",
+    "name": "Research",
+    "credit": "ARR",
+    "instructor": "Simha, R",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10902,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "10",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Pless, R",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16456,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "11",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Vora, P",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16458,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "12",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Youssef, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16459,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "13",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Arora, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16460,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "14",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Huang, H",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16462,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "16",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Wood, T",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16463,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "17",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Hahn, J",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16464,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "18",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Yerukhimovich, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16465,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "19",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Narahari, B",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16466,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "20",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Caliskan, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16467,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "21",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Parmer, G",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16468,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "22",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Simha, R",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16469,
+    "department": "CSCI",
+    "courseID": 6998,
+    "section": "23",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Aviv, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10903,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "10",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Pless, R",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16470,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "11",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Vora, P",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16471,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "12",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Youssef, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16472,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "13",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Arora, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16473,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "14",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Huang, H",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16475,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "16",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Wood, T",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16476,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "17",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Hahn, J",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16477,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "18",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Yerukhimovich, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16478,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "19",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Narahari, B",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16479,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "20",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Caliskan, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16480,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "21",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Parmer, G",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16481,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "22",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Simha, R",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 16482,
+    "department": "CSCI",
+    "courseID": 6999,
+    "section": "23",
+    "name": "Thesis Research",
+    "credit": "3.00",
+    "instructor": "Aviv, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11190,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "10",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Pless, R",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 14438,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "12",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Youssef, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10097,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "13",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Choi, H",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11281,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "14",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Vora, P",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10098,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "16",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Aviv, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 12386,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "17",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Wood, T",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10100,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "18",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Hahn, J",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 10099,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "20",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Narahari, B",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11000,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "21",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Simha, R",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11915,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "22",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Parmer, G",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 15882,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "23",
+    "name": "Dissertation Research",
+    "credit": "1.00",
+    "instructor": "Caliskan, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  },
+  {
+    "crn": 11797,
+    "department": "CSCI",
+    "courseID": 8999,
+    "section": "24",
+    "name": "Dissertation Research",
+    "credit": "ARR",
+    "instructor": "Yerukhimovich, A",
+    "schedule": [],
+    "startDate": "01/11/21",
+    "endDate": "04/26/21"
+  }
+]
