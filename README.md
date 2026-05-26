@@ -1,6 +1,6 @@
 # gwu-schedule-scraper
 
-Scrapes GWU's course scheduling system and outputs structured JSON.
+Scrapes George Washington University's course scheduling system and outputs structured JSON.
 
 ## Requirements
 
@@ -45,7 +45,7 @@ node src/index.ts -t 202503 -s MATH -o math.json
 
 ## Term IDs
 
-GWU term IDs follow the format `YYYYSS`:
+George Washington University term IDs follow the format `YYYYSS`:
 
 | Suffix | Semester |
 |--------|----------|
