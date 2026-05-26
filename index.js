@@ -1,5 +1,4 @@
 import jsdom from "jsdom";
-import fetch from "node-fetch";
 import fs from "fs";
 const { JSDOM } = jsdom;
 
