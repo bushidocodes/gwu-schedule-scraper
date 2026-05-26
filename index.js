@@ -54,13 +54,20 @@ function parseFromTo(input) {
 }
 
 async function main() {
-  const { values } = parseArgs({
-    options: {
-      term:    { type: "string", short: "t" },
-      subject: { type: "string", short: "s" },
-      campus:  { type: "string", short: "c", default: "1" },
-    },
-  });
+  let values;
+  try {
+    ({ values } = parseArgs({
+      options: {
+        term:    { type: "string", short: "t" },
+        subject: { type: "string", short: "s" },
+        campus:  { type: "string", short: "c", default: "1" },
+      },
+    }));
+  } catch (err) {
+    console.error(`Error: ${err.message}`);
+    console.error("Usage: node index.js --term <termId> --subject <subjId> [--campus <campId>]");
+    process.exit(1);
+  }
 
   const { term, subject, campus } = values;
 
@@ -71,10 +78,21 @@ async function main() {
   }
 
   const url = `https://my.gwu.edu/mod/pws/print.cfm?campId=${campus}&termId=${term}&subjId=${subject}`;
-  const response = await fetch(url);
+
+  let response;
+  try {
+    response = await fetch(url);
+  } catch (err) {
+    console.error(`Network error: ${err.message}`);
+    process.exit(1);
+  }
+
+  if (!response.ok) {
+    console.error(`HTTP ${response.status} from ${url}`);
+    process.exit(1);
+  }
 
   const text = await response.text();
-
   const $ = load(text);
 
   for (let courseNode of $("table").toArray()) {
@@ -109,7 +127,19 @@ async function main() {
     });
   }
 
-  fs.writeFileSync("./test.json", JSON.stringify(courses));
+  if (courses.length === 0) {
+    console.error(`Warning: no courses found for term=${term} subject=${subject} campus=${campus}`);
+  }
+
+  try {
+    fs.writeFileSync("./test.json", JSON.stringify(courses));
+  } catch (err) {
+    console.error(`Failed to write output: ${err.message}`);
+    process.exit(1);
+  }
 }
 
-main();
+main().catch((err) => {
+  console.error(`Unexpected error: ${err.message}`);
+  process.exit(1);
+});
