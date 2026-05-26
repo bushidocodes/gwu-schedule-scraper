@@ -15,7 +15,7 @@ npm install
 ## Usage
 
 ```sh
-node src/index.ts --term <termId> --subject <subjId> [--campus <campId>] [--output <file>]
+npm start -- --term <termId> --subject <subjId> [--campus <campId>] [--output <file>]
 ```
 
 | Flag | Short | Required | Default | Description |
@@ -31,16 +31,16 @@ Output goes to **stdout** by default, making it easy to pipe to other tools.
 
 ```sh
 # print to terminal
-node src/index.ts --term 202503 --subject CSCI
+npm start -- --term 202503 --subject CSCI
 
 # pipe to jq
-node src/index.ts --term 202503 --subject CSCI | jq '.[] | .name'
+npm start -- --term 202503 --subject CSCI | jq '.[] | .name'
 
 # write to a file
-node src/index.ts --term 202503 --subject CSCI --output courses.json
+npm start -- --term 202503 --subject CSCI --output courses.json
 
 # short flags
-node src/index.ts -t 202503 -s MATH -o math.json
+npm start -- -t 202503 -s MATH -o math.json
 ```
 
 ## Term IDs
@@ -86,9 +86,6 @@ Multi-day courses produce one `schedule` entry per day. Courses with no schedule
 ## Development
 
 ```sh
-# type check
-node node_modules/typescript/bin/tsc --noEmit
-
-# run tests
-node node_modules/vitest/vitest.mjs run
+npm run typecheck
+npm test
 ```
