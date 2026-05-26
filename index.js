@@ -1,5 +1,6 @@
 import { load } from "cheerio";
 import fs from "fs";
+import { parseArgs } from "util";
 
 let courses = [];
 
@@ -53,9 +54,24 @@ function parseFromTo(input) {
 }
 
 async function main() {
-  const response = await fetch(
-    "https://my.gwu.edu/mod/pws/print.cfm?campId=1&termId=202101&subjId=CSCI"
-  );
+  const { values } = parseArgs({
+    options: {
+      term:    { type: "string", short: "t" },
+      subject: { type: "string", short: "s" },
+      campus:  { type: "string", short: "c", default: "1" },
+    },
+  });
+
+  const { term, subject, campus } = values;
+
+  if (!term || !subject) {
+    console.error("Usage: node index.js --term <termId> --subject <subjId> [--campus <campId>]");
+    console.error("  e.g. node index.js --term 202101 --subject CSCI");
+    process.exit(1);
+  }
+
+  const url = `https://my.gwu.edu/mod/pws/print.cfm?campId=${campus}&termId=${term}&subjId=${subject}`;
+  const response = await fetch(url);
 
   const text = await response.text();
 
