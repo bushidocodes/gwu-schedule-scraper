@@ -1,12 +1,12 @@
 import { load } from "cheerio";
 import type { Course, Schedule } from "./types.ts";
 
-const normalizeSubject = (input: string): [string, number] => {
+export const normalizeSubject = (input: string): [string, number] => {
   const parts = input.trim().split(/\s+/g);
   return [parts[0].trim(), parseInt(parts[1])];
 };
 
-const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedule[] => {
+export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedule[] => {
   // A course listing may show multiple schedule entries separated by AND
   const dayTimes = dayTimesRaw.split("AND");
   const locations = locationsRaw.split("AND");
@@ -36,7 +36,7 @@ const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedule[] =>
   return results;
 };
 
-const parseFromTo = (input: string): [string, string] => {
+export const parseFromTo = (input: string): [string, string] => {
   const parts = input.split("-").map((token) => token.trim());
   return [parts[0], parts[1]];
 };
