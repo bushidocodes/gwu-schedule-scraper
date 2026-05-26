@@ -2,14 +2,14 @@
   "name": "scrape-schedule",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "type": "module",
   "engines": {
     "node": ">=22"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.ts",
+    "start": "node src/index.ts",
     "typecheck": "tsc --noEmit"
   },
   "author": "",
