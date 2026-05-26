@@ -1,6 +1,5 @@
-import jsdom from "jsdom";
+import { load } from "cheerio";
 import fs from "fs";
-const { JSDOM } = jsdom;
 
 let courses = [];
 
@@ -60,28 +59,22 @@ async function main() {
 
   const text = await response.text();
 
-  const dom = new JSDOM(text);
-  let courseNodes = dom.window.document.querySelectorAll("table");
+  const $ = load(text);
 
-  for (let courseNode of courseNodes) {
-    let rows = courseNode.querySelectorAll("tr");
-    let mainRow = rows[0];
-    let cells = mainRow.querySelectorAll("td");
-    let status = cells[0].textContent;
+  for (let courseNode of $("table").toArray()) {
+    const cells = $(courseNode).find("tr").eq(0).find("td");
+    let status = cells.eq(0).text();
     if (status !== "OPEN" && status !== "CLOSED") continue;
 
-    let crn = Number.parseInt(cells[1].textContent);
-    let subject = cells[2].textContent;
-
-    // A section can be prepended by a letter of some kind. i.e. O10
-    let section = cells[3].textContent;
-    let name = cells[4].textContent;
-    // Credits can be a range of values or ARR
-    let credit = cells[5].textContent.trim();
-    let instructor = cells[6].textContent.trim();
-    let locationRaw = cells[7].textContent;
-    let dayTimeRaw = cells[8].textContent;
-    let fromTo = cells[9].textContent;
+    let crn = Number.parseInt(cells.eq(1).text());
+    let subject = cells.eq(2).text();
+    let section = cells.eq(3).text();
+    let name = cells.eq(4).text();
+    let credit = cells.eq(5).text().trim();
+    let instructor = cells.eq(6).text().trim();
+    let locationRaw = cells.eq(7).text();
+    let dayTimeRaw = cells.eq(8).text();
+    let fromTo = cells.eq(9).text();
     let [department, courseID] = normalize_subject(subject);
     let schedule = parseDayTimes(dayTimeRaw, locationRaw);
     let [startDate, endDate] = parseFromTo(fromTo);
