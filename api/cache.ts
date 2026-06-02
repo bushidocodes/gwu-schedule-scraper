@@ -1,0 +1,28 @@
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const CACHE_DIR = path.join(__dirname, "..", "cache");
+const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS ?? "") || 60 * 60 * 1000;
+
+function cacheFile(key: string): string {
+  // Sanitize key for filesystem
+  return path.join(CACHE_DIR, key.replace(/[^a-z0-9-]/gi, "_") + ".json");
+}
+
+export function getCached<T>(key: string): T | null {
+  const file = cacheFile(key);
+  try {
+    const stat = fs.statSync(file);
+    if (Date.now() - stat.mtimeMs > CACHE_TTL_MS) return null;
+    return JSON.parse(fs.readFileSync(file, "utf-8")) as T;
+  } catch {
+    return null;
+  }
+}
+
+export function setCached<T>(key: string, data: T): void {
+  fs.mkdirSync(CACHE_DIR, { recursive: true });
+  fs.writeFileSync(cacheFile(key), JSON.stringify(data));
+}
