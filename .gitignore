@@ -1,2 +1,4 @@
 node_modules
 test.json
+cache/
+api/node_modules/
