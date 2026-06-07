@@ -9,7 +9,7 @@ import { getCached, setCached } from "./cache.ts";
 /** SEAS department codes supported by the GWU schedule scraper. */
 export const DEPARTMENTS = ["BME", "CE", "CSCI", "ECE", "EMSE", "MAE"] as const;
 const DEFAULT_CAMPUS = "1";
-const rawPort = parseInt(process.env.PORT ?? "", 10);
+const rawPort = Number.parseInt(process.env.PORT ?? "", 10);
 const PORT =
   Number.isInteger(rawPort) && rawPort >= 1 && rawPort <= 65535
     ? rawPort
