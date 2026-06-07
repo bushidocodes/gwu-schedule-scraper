@@ -1,4 +1,4 @@
-const FETCH_TIMEOUT_MS = 15_000;
+export const FETCH_TIMEOUT_MS = 15_000;
 
 export async function fetchSchedule(
   term: string,
@@ -6,7 +6,11 @@ export async function fetchSchedule(
   campus: string,
   timeoutMs: number = FETCH_TIMEOUT_MS,
 ): Promise<string> {
-  const url = `https://my.gwu.edu/mod/pws/print.cfm?campId=${campus}&termId=${term}&subjId=${subject}`;
+  const url =
+    `https://my.gwu.edu/mod/pws/print.cfm` +
+    `?campId=${encodeURIComponent(campus)}` +
+    `&termId=${encodeURIComponent(term)}` +
+    `&subjId=${encodeURIComponent(subject)}`;
   const response = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) });
 
   if (!response.ok) {

@@ -2,6 +2,7 @@ import fs from "fs";
 import { parseArgs } from "util";
 import { fetchSchedule } from "./scraper.ts";
 import { parseCourses } from "./parser.ts";
+import { toErrorMessage } from "./utils.ts";
 
 const USAGE = `Usage: node src/index.ts --term <termId> --subject <subjId> [--campus <campId>] [--output <file>] [--pretty]
   e.g. node src/index.ts --term 202503 --subject CSCI
@@ -30,7 +31,7 @@ async function main(): Promise<void> {
     output = values.output;
     pretty = values.pretty ?? false;
   } catch (err) {
-    console.error(`Error: ${(err as Error).message}`);
+    console.error(`Error: ${toErrorMessage(err)}`);
     console.error(USAGE);
     process.exit(1);
   }
@@ -44,7 +45,7 @@ async function main(): Promise<void> {
   try {
     html = await fetchSchedule(term, subject, campus);
   } catch (err) {
-    console.error((err as Error).message);
+    console.error(toErrorMessage(err));
     process.exit(1);
   }
 
@@ -60,7 +61,7 @@ async function main(): Promise<void> {
     try {
       fs.writeFileSync(output, json);
     } catch (err) {
-      console.error(`Failed to write to ${output}: ${(err as Error).message}`);
+      console.error(`Failed to write to ${output}: ${toErrorMessage(err)}`);
       process.exit(1);
     }
   } else {
@@ -69,6 +70,6 @@ async function main(): Promise<void> {
 }
 
 main().catch((err) => {
-  console.error(`Unexpected error: ${(err as Error).message}`);
+  console.error(`Unexpected error: ${toErrorMessage(err)}`);
   process.exit(1);
 });

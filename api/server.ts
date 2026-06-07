@@ -2,6 +2,7 @@ import express from "express";
 import { fetchSchedule } from "../src/scraper.ts";
 import { parseCourses } from "../src/parser.ts";
 import type { Course } from "../src/types.ts";
+import { toErrorMessage } from "../src/utils.ts";
 import { getTerms, isValidTermId } from "./terms.ts";
 import { getCached, setCached } from "./cache.ts";
 
@@ -125,14 +126,15 @@ app.get("/terms/:termId/sections", async (req, res) => {
     }
     res.json({ sections });
   } catch (err) {
-    const msg = (err as Error).message;
+    const msg = toErrorMessage(err);
     console.error(`[error] ${msg}`);
     res.status(502).json({ error: `Failed to fetch from GWU: ${msg}` });
   }
 });
 
 // Catch-all: unknown routes return JSON 404 instead of Express's default HTML response
-app.use((_req, res) => {
+app.use((req, res) => {
+  console.log(`[404] ${req.method} ${req.path}`);
   res.status(404).json({ error: "Not found" });
 });
 
