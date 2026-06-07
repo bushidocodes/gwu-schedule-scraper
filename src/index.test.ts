@@ -3,10 +3,11 @@
  * calls are isolated and don't abort the test runner.
  */
 import { spawnSync } from "child_process";
+import { fileURLToPath } from "url";
 import { describe, it, expect } from "vitest";
 
 const NODE = process.execPath;
-const CLI = new URL("./index.ts", import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1");
+const CLI = fileURLToPath(new URL("./index.ts", import.meta.url));
 const FLAGS = ["--experimental-strip-types"];
 
 function run(...args: string[]) {
@@ -57,6 +58,12 @@ describe("CLI argument validation", () => {
     const { stderr, status } = run("--term", "202601", "--subject", "123INVALID");
     expect(status).toBe(1);
     expect(stderr).toMatch(/invalid subject/i);
+  });
+
+  it("exits 1 with a clear message for a non-numeric campus", () => {
+    const { stderr, status } = run("--term", "202601", "--subject", "CSCI", "--campus", "abc");
+    expect(status).toBe(1);
+    expect(stderr).toMatch(/invalid campus/i);
   });
 
   it("normalises subject to uppercase before fetching", () => {

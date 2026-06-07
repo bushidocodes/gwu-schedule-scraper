@@ -23,6 +23,9 @@ export const normalizeSubject = (input: string): [string, number] => {
  * to avoid emitting redundant entries when the upstream HTML repeats a block.
  */
 export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedule[] => {
+  // Fast path: both cells empty means no scheduled time (async/TBA section)
+  if (!dayTimesRaw.trim() && !locationsRaw.trim()) return [];
+
   // A course listing may show multiple schedule entries separated by AND
   const dayTimes = dayTimesRaw.split("AND");
   const locations = locationsRaw.split("AND");
@@ -65,7 +68,12 @@ export const parseFromTo = (input: string): [string, string] => {
   return [parts[0], parts[1]];
 };
 
-export function parseCourses(html: string): Course[] {
+/**
+ * Parses the full HTML response from the GWU schedule printer into an array
+ * of `Course` objects.  Each `<table>` whose first row starts with `"OPEN"` or
+ * `"CLOSED"` is treated as a course row; all other tables are skipped.
+ */
+export const parseCourses = (html: string): Course[] => {
   const $ = load(html);
   const courses: Course[] = [];
 
@@ -92,4 +100,4 @@ export function parseCourses(html: string): Course[] {
   }
 
   return courses;
-}
+};
