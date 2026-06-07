@@ -10,7 +10,7 @@
   "scripts": {
     "test": "vitest run",
     "start": "node src/index.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit && tsc --noEmit --project api/tsconfig.json"
   },
   "author": "",
   "license": "ISC",

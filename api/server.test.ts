@@ -1,6 +1,25 @@
-import { describe, it, expect } from "vitest";
-import { toApiSection } from "./server.ts";
+import { createServer } from "http";
+import type { AddressInfo } from "net";
+import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { app, toApiSection } from "./server.ts";
 import type { Course } from "../src/types.ts";
+
+// Spin up a real HTTP server on a random port for route integration tests
+let baseUrl: string;
+let server: ReturnType<typeof createServer>;
+
+beforeAll(async () => {
+  server = createServer(app);
+  await new Promise<void>((resolve) => server.listen(0, resolve));
+  const port = (server.address() as AddressInfo).port;
+  baseUrl = `http://localhost:${port}`;
+});
+
+afterAll(async () => {
+  await new Promise<void>((resolve, reject) =>
+    server.close((err) => (err ? reject(err) : resolve())),
+  );
+});
 
 const baseCourse: Course = {
   crn: 12906,
@@ -14,6 +33,53 @@ const baseCourse: Course = {
   startDate: "01/11/21",
   endDate: "04/26/21",
 };
+
+describe("GET /terms", () => {
+  it("returns a JSON terms array", async () => {
+    const res = await fetch(`${baseUrl}/terms`);
+    expect(res.status).toBe(200);
+    const body = await res.json() as { terms: { id: string; label: string }[] };
+    expect(Array.isArray(body.terms)).toBe(true);
+    expect(body.terms.length).toBeGreaterThan(0);
+  });
+
+  it("includes a term id matching the current year", async () => {
+    const res = await fetch(`${baseUrl}/terms`);
+    const body = await res.json() as { terms: { id: string }[] };
+    const currentYear = new Date().getFullYear().toString();
+    expect(body.terms.some((t) => t.id.startsWith(currentYear))).toBe(true);
+  });
+});
+
+describe("unknown routes", () => {
+  it("returns JSON 404 for unknown GET paths", async () => {
+    const res = await fetch(`${baseUrl}/nonexistent`);
+    expect(res.status).toBe(404);
+    const body = await res.json() as { error: string };
+    expect(body.error).toBe("Not found");
+  });
+
+  it("returns JSON 404 content-type header", async () => {
+    const res = await fetch(`${baseUrl}/also-unknown`);
+    expect(res.headers.get("content-type")).toMatch(/application\/json/);
+  });
+});
+
+describe("GET /terms/:termId/sections validation", () => {
+  it("returns 400 with JSON error for bad termId format", async () => {
+    const res = await fetch(`${baseUrl}/terms/bad/sections`);
+    expect(res.status).toBe(400);
+    const body = await res.json() as { error: string };
+    expect(body.error).toMatch(/invalid termid/i);
+  });
+
+  it("returns 400 with JSON error for unknown dept", async () => {
+    const res = await fetch(`${baseUrl}/terms/202601/sections?dept=ZZZZ`);
+    expect(res.status).toBe(400);
+    const body = await res.json() as { error: string };
+    expect(body.error).toMatch(/unknown department/i);
+  });
+});
 
 describe("toApiSection", () => {
   it("does not leak the instructor field into the API output", () => {

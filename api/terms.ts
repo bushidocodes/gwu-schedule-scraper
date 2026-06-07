@@ -22,5 +22,5 @@ export function getTerms(): Term[] {
 }
 
 export function isValidTermId(id: string): boolean {
-  return /^\d{4}(01|02|03)$/.test(id);
+  return /^\d{4}(?:01|02|03)$/.test(id);
 }
