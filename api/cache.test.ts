@@ -84,3 +84,19 @@ describe("setCached", () => {
     expect(getCached("term/2026 dept?CSCI")).toEqual({ ok: true });
   });
 });
+
+describe("getCached (malformed cache file)", () => {
+  it("returns null and logs an error when the cache file contains invalid JSON", () => {
+    const { getCached } = createCache(dir, 3_600_000);
+    // Write a corrupted cache file directly
+    const corruptFile = join(dir, "bad_key.json");
+    fs.writeFileSync(corruptFile, "{ this is not valid json");
+    const errors: string[] = [];
+    const spy = vi.spyOn(console, "error").mockImplementation((msg: string) => errors.push(msg));
+    const result = getCached("bad_key");
+    spy.mockRestore();
+    expect(result).toBeNull();
+    expect(errors.length).toBe(1);
+    expect(errors[0]).toMatch(/\[cache\] malformed JSON/);
+  });
+});

@@ -23,11 +23,19 @@ To run without watching:
 npm start
 ```
 
+To run the test suite:
+
+```bash
+npm test
+```
+
 ## Endpoints
 
 ### `GET /terms`
 
-Returns a list of supported academic terms, most recent first.
+Returns a list of supported academic terms, most recent first.  The window
+covers the previous year through two years ahead and updates automatically
+with the calendar — no code changes needed each year.
 
 ```bash
 curl http://localhost:3000/terms
@@ -36,15 +44,30 @@ curl http://localhost:3000/terms
 ```json
 {
   "terms": [
+    { "id": "202803", "label": "Fall 2028" },
+    { "id": "202802", "label": "Summer 2028" },
+    { "id": "202801", "label": "Spring 2028" },
     { "id": "202703", "label": "Fall 2027" },
-    { "id": "202702", "label": "Summer 2027" },
-    { "id": "202701", "label": "Spring 2027" },
     ...
   ]
 }
 ```
 
 Term ID format: `YYYYSS` where `SS` is `01` (Spring), `02` (Summer), or `03` (Fall).
+
+### `GET /departments`
+
+Returns the list of supported SEAS department codes.
+
+```bash
+curl http://localhost:3000/departments
+```
+
+```json
+{
+  "departments": ["BME", "CE", "CSCI", "ECE", "EMSE", "MAE"]
+}
+```
 
 ### `GET /terms/:termId/sections`
 
@@ -105,6 +128,7 @@ Note: `instructors` is always an array (wraps the scraper's single `instructor` 
 | Status | Meaning |
 |--------|---------|
 | `400`  | Invalid `termId` format or unknown `dept` code |
+| `404`  | Route does not exist |
 | `502`  | GWU upstream fetch failed (network error, site down, etc.) |
 
 ## Cache
@@ -112,7 +136,7 @@ Note: `instructors` is always an array (wraps the scraper's single `instructor` 
 Scraped results are cached to `../cache/` (a `cache/` directory at the repo root, next to `api/`). This directory is git-ignored.
 
 - **TTL**: 1 hour by default
-- **Key**: `{termId}-{dept}.json` (e.g. `202601-CSCI.json`, `202601-ALL.json`)
+- **Key**: `{termId}-{dept}.json` (e.g. `202601-CSCI.json`)
 - **Override TTL**: set the `CACHE_TTL_MS` environment variable (milliseconds)
 
 ```bash
@@ -131,8 +155,8 @@ Set these environment variables in your hosting platform:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `PORT` | `3000` | Port the server listens on |
-| `CACHE_TTL_MS` | `3600000` | Cache time-to-live in milliseconds |
+| `PORT` | `3000` | Port the server listens on (must be 1–65535) |
+| `CACHE_TTL_MS` | `3600000` | Cache time-to-live in milliseconds (must be a positive integer) |
 
 **Important**: The scraper fetches data from `my.gwu.edu`. If deploying outside the GWU network, you may need to route traffic through a GWU VPN or proxy, or the scrape will fail with a 502 error.
 
@@ -144,10 +168,11 @@ gwu-schedule-scraper/
     scraper.ts    # fetchSchedule() — HTTP fetch from my.gwu.edu
     parser.ts     # parseCourses() — Cheerio HTML parser
     types.ts      # Course, Schedule interfaces
+    utils.ts      # Shared helpers (toErrorMessage)
   api/
     server.ts     # Express server (this package's entry point)
     terms.ts      # Term list and validation
-    cache.ts      # File-based cache
+    cache.ts      # File-based cache (createCache factory)
     package.json
     tsconfig.json
   cache/          # Auto-created at runtime; git-ignored

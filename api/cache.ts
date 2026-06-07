@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { toErrorMessage } from "../src/utils.ts";
 
 /**
  * Returns a cache instance that stores serialised JSON files under `dir`
@@ -19,8 +20,15 @@ export function createCache(dir: string, ttlMs: number) {
     try {
       const stat = fs.statSync(file);
       if (Date.now() - stat.mtimeMs > ttlMs) return null;
-      return JSON.parse(fs.readFileSync(file, "utf-8")) as T;
+      const raw = fs.readFileSync(file, "utf-8");
+      try {
+        return JSON.parse(raw) as T;
+      } catch (parseErr) {
+        console.error(`[cache] malformed JSON in "${key}" — ignoring: ${toErrorMessage(parseErr)}`);
+        return null;
+      }
     } catch {
+      // File missing or unreadable — cache miss
       return null;
     }
   }
@@ -32,7 +40,7 @@ export function createCache(dir: string, ttlMs: number) {
       fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(cacheFile(key), JSON.stringify(data));
     } catch (err) {
-      console.error(`[cache] failed to write "${key}": ${(err as Error).message}`);
+      console.error(`[cache] failed to write "${key}": ${toErrorMessage(err)}`);
     }
   }
 

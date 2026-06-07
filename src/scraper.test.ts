@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { fetchSchedule } from "./scraper.ts";
+import { fetchSchedule, FETCH_TIMEOUT_MS } from "./scraper.ts";
 
 afterEach(() => {
   vi.unstubAllGlobals();
@@ -30,6 +30,21 @@ describe("fetchSchedule", () => {
     expect(calls[0]).toBe(
       "https://my.gwu.edu/mod/pws/print.cfm?campId=2&termId=202603&subjId=ECE",
     );
+  });
+
+  it("URL-encodes each parameter", async () => {
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", async (url: string) => {
+      calls.push(url);
+      return { ok: true, text: async () => "" };
+    });
+    await fetchSchedule("2026 01", "CS&CI", "1");
+    expect(calls[0]).toContain("termId=2026%2001");
+    expect(calls[0]).toContain("subjId=CS%26CI");
+  });
+
+  it("exports FETCH_TIMEOUT_MS as a positive number", () => {
+    expect(FETCH_TIMEOUT_MS).toBeGreaterThan(0);
   });
 
   it("passes an AbortSignal to fetch so the request can time out", async () => {
