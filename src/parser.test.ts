@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { normalizeSubject, parseDayTimes, parseFromTo, parseCourses } from "./parser.ts";
 
 describe("normalizeSubject", () => {
@@ -12,6 +12,15 @@ describe("normalizeSubject", () => {
 
   it("handles graduate-level course numbers", () => {
     expect(normalizeSubject("CSCI 6221")).toEqual(["CSCI", 6221]);
+  });
+
+  it("returns NaN courseID and logs an error when course number is absent", () => {
+    const errors: string[] = [];
+    const spy = vi.spyOn(console, "error").mockImplementation((msg) => errors.push(msg));
+    const result = normalizeSubject("CSCI");
+    spy.mockRestore();
+    expect(isNaN(result[1])).toBe(true);
+    expect(errors.length).toBe(1);
   });
 });
 
