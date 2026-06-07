@@ -5,7 +5,8 @@ import type { Course } from "../src/types.ts";
 import { getTerms, isValidTermId } from "./terms.ts";
 import { getCached, setCached } from "./cache.ts";
 
-const DEPARTMENTS = ["BME", "CE", "CSCI", "ECE", "EMSE", "MAE"];
+/** SEAS department codes supported by the GWU schedule scraper. */
+export const DEPARTMENTS = ["BME", "CE", "CSCI", "ECE", "EMSE", "MAE"] as const;
 const DEFAULT_CAMPUS = "1";
 const rawPort = parseInt(process.env.PORT ?? "", 10);
 const PORT =
@@ -16,8 +17,8 @@ if (process.env.PORT !== undefined && PORT === 3000 && process.env.PORT !== "300
   console.warn(`[config] Invalid PORT="${process.env.PORT}" — must be 1–65535, falling back to 3000`);
 }
 
-// Maps Course (singular instructor, nullable times) to the shape the Android app expects
-interface ApiSection {
+/** The shape returned by `/terms/:termId/sections`. */
+export interface ApiSection {
   crn: number;
   department: string;
   courseID: number;
@@ -75,8 +76,13 @@ app.use((req, res, next) => {
 });
 
 // GET /terms
-app.get("/terms", (req, res) => {
+app.get("/terms", (_req, res) => {
   res.json({ terms: getTerms() });
+});
+
+// GET /departments
+app.get("/departments", (_req, res) => {
+  res.json({ departments: DEPARTMENTS });
 });
 
 // GET /terms/:termId/sections[?dept=CSCI]
@@ -89,7 +95,7 @@ app.get("/terms/:termId/sections", async (req, res) => {
     return;
   }
 
-  if (dept && !DEPARTMENTS.includes(dept)) {
+  if (dept && !(DEPARTMENTS as readonly string[]).includes(dept)) {
     res.status(400).json({ error: `Unknown department: ${dept}. Supported: ${DEPARTMENTS.join(", ")}` });
     return;
   }
@@ -103,7 +109,8 @@ app.get("/terms/:termId/sections", async (req, res) => {
       const results = await Promise.allSettled(DEPARTMENTS.map((d) => fetchDept(termId, d)));
       results.forEach((r, i) => {
         if (r.status === "rejected") {
-          console.error(`[error] dept=${DEPARTMENTS[i]} term=${termId}: ${(r.reason as Error).message}`);
+          const msg = r.reason instanceof Error ? r.reason.message : String(r.reason);
+          console.error(`[error] dept=${DEPARTMENTS[i]} term=${termId}: ${msg}`);
         }
       });
       const combined = results
@@ -136,6 +143,7 @@ if (import.meta.filename === process.argv[1]) {
     console.log(`gwu-schedule-api listening on http://localhost:${PORT}`);
     console.log(`Endpoints:`);
     console.log(`  GET /terms`);
+    console.log(`  GET /departments`);
     console.log(`  GET /terms/:termId/sections`);
     console.log(`  GET /terms/:termId/sections?dept=CSCI`);
   });

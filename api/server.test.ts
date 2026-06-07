@@ -81,6 +81,24 @@ describe("GET /terms/:termId/sections validation", () => {
   });
 });
 
+describe("GET /departments", () => {
+  it("returns a JSON array of department codes", async () => {
+    const res = await fetch(`${baseUrl}/departments`);
+    expect(res.status).toBe(200);
+    const body = await res.json() as { departments: string[] };
+    expect(Array.isArray(body.departments)).toBe(true);
+    expect(body.departments.length).toBeGreaterThan(0);
+  });
+
+  it("includes expected SEAS department codes", async () => {
+    const res = await fetch(`${baseUrl}/departments`);
+    const body = await res.json() as { departments: string[] };
+    for (const dept of ["CSCI", "ECE", "BME", "MAE"]) {
+      expect(body.departments).toContain(dept);
+    }
+  });
+});
+
 describe("toApiSection", () => {
   it("does not leak the instructor field into the API output", () => {
     const section = toApiSection(baseCourse);
@@ -105,6 +123,14 @@ describe("toApiSection", () => {
     const section = toApiSection(course);
     expect(section.schedule[0].startTime).toBe("");
     expect(section.schedule[0].endTime).toBe("");
+  });
+
+  it("wraps a semicolon-separated multi-instructor string as a single-element array", () => {
+    // Per the type docs: "Smith, J; Doe, A" is stored as one string and wrapped
+    // in a one-element array — the API does not split on semicolons.
+    const section = toApiSection({ ...baseCourse, instructor: "Smith, J; Doe, A" });
+    expect(section.instructors).toEqual(["Smith, J; Doe, A"]);
+    expect(section.instructors).toHaveLength(1);
   });
 
   it("preserves all other course fields", () => {

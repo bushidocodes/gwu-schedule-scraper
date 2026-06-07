@@ -74,7 +74,7 @@ export function parseCourses(html: string): Course[] {
     const status = cells.eq(0).text();
     if (status !== "OPEN" && status !== "CLOSED") continue;
 
-    const crn = Number.parseInt(cells.eq(1).text());
+    const crn = Number.parseInt(cells.eq(1).text(), 10);
     const subjectText = cells.eq(2).text();
     const section = cells.eq(3).text();
     const name = cells.eq(4).text();
