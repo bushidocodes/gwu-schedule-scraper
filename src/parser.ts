@@ -38,6 +38,10 @@ export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedu
 
 export const parseFromTo = (input: string): [string, string] => {
   const parts = input.split("-").map((token) => token.trim());
+  if (parts.length < 2 || !parts[1]) {
+    console.error(`parseFromTo: unexpected format "${input}"`);
+    return [parts[0] ?? "", ""];
+  }
   return [parts[0], parts[1]];
 };
 

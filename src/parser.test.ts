@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { normalizeSubject, parseDayTimes, parseFromTo, parseCourses } from "./parser.ts";
 
 describe("normalizeSubject", () => {
@@ -22,6 +22,15 @@ describe("parseFromTo", () => {
 
   it("handles spaces around the separator", () => {
     expect(parseFromTo("01/11/21 - 04/26/21")).toEqual(["01/11/21", "04/26/21"]);
+  });
+
+  it("returns empty string endDate and logs error when hyphen is absent", () => {
+    const errors: string[] = [];
+    const spy = vi.spyOn(console, "error").mockImplementation((msg) => errors.push(msg));
+    const result = parseFromTo("01/11/21");
+    spy.mockRestore();
+    expect(result).toEqual(["01/11/21", ""]);
+    expect(errors.length).toBe(1);
   });
 });
 
