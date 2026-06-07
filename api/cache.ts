@@ -58,7 +58,7 @@ export function createCache(dir: string, ttlMs: number): CacheInstance {
 // import.meta.dirname is available in Node.js 21.2+ (engines require >=22)
 const CACHE_DIR = path.join(import.meta.dirname, "..", "cache");
 
-const rawTtl = parseInt(process.env.CACHE_TTL_MS ?? "", 10);
+const rawTtl = Number.parseInt(process.env.CACHE_TTL_MS ?? "", 10);
 if (process.env.CACHE_TTL_MS !== undefined && (Number.isNaN(rawTtl) || rawTtl <= 0)) {
   console.warn(`[cache] CACHE_TTL_MS="${process.env.CACHE_TTL_MS}" is not a positive integer — using default 1 hour`);
 }

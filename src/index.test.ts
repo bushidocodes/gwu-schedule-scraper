@@ -13,7 +13,9 @@ const FLAGS = ["--experimental-strip-types"];
 function run(...args: string[]) {
   return spawnSync(NODE, [...FLAGS, CLI, ...args], {
     encoding: "utf-8",
-    timeout: 5_000,
+    // Allow up to 20 s so network-calling subprocesses (FETCH_TIMEOUT_MS = 15 s)
+    // have time to complete or time out before spawnSync kills them.
+    timeout: 20_000,
   });
 }
 
@@ -67,15 +69,12 @@ describe("CLI argument validation", () => {
   });
 
   it("normalises subject to uppercase before fetching", () => {
-    // We can't easily assert the network call is uppercased without mocking,
-    // but we can confirm that a lowercase valid subject doesn't trigger the
-    // validation error (it should be normalised and proceed to the network call,
-    // which will fail in test environment — we just check it's not a validation error).
+    // Confirm a lowercase subject passes validation and reaches the network call.
+    // We only check that the validation error is NOT emitted — the process may
+    // succeed (status 0), fail with a network error (status 1), or be killed by
+    // the subprocess timeout (status null) if GWU is slow to respond.
     const { stderr, status } = run("--term", "202601", "--subject", "csci");
-    // The process will likely fail because there's no GWU network here —
-    // but it should NOT fail with "invalid subject".
     expect(stderr).not.toMatch(/invalid subject/i);
-    // status could be 0 (if network works) or 1 (network error), either is fine
-    expect([0, 1]).toContain(status);
+    expect([0, 1, null]).toContain(status);
   });
 });
