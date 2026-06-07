@@ -1,5 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { getTerms, isValidTermId } from "./terms.ts";
+import { getTerms } from "./terms.ts";
+
+// isValidTermId is tested thoroughly in src/utils.test.ts (it now lives in
+// src/utils.ts and is re-exported from here).  No duplication needed.
 
 describe("getTerms", () => {
   it("includes terms for the current year", () => {
@@ -33,18 +36,11 @@ describe("getTerms", () => {
     const term = getTerms().find((t) => t.id === `${currentYear}01`);
     expect(term?.label).toBe(`Spring ${currentYear}`);
   });
-});
 
-describe("isValidTermId", () => {
-  it("accepts valid term IDs", () => {
+  it("re-exports isValidTermId from src/utils — import still resolves", async () => {
+    // Smoke-test the re-export path so a future refactor doesn't silently break it.
+    const { isValidTermId } = await import("./terms.ts");
     expect(isValidTermId("202601")).toBe(true);
-    expect(isValidTermId("202802")).toBe(true);
-    expect(isValidTermId("203003")).toBe(true);
-  });
-
-  it("rejects invalid term IDs", () => {
-    expect(isValidTermId("202604")).toBe(false);
-    expect(isValidTermId("20260")).toBe(false);
-    expect(isValidTermId("abcd01")).toBe(false);
+    expect(isValidTermId("bad")).toBe(false);
   });
 });

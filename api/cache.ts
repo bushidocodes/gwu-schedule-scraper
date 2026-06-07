@@ -2,6 +2,12 @@ import fs from "fs";
 import path from "path";
 import { toErrorMessage } from "../src/utils.ts";
 
+/** Public interface of a cache instance returned by {@link createCache}. */
+export interface CacheInstance {
+  getCached<T>(key: string): T | null;
+  setCached<T>(key: string, data: T): void;
+}
+
 /**
  * Returns a cache instance that stores serialised JSON files under `dir`
  * and expires entries after `ttlMs` milliseconds.
@@ -9,7 +15,7 @@ import { toErrorMessage } from "../src/utils.ts";
  * Exported so tests can point the cache at a temporary directory without
  * touching the real cache or mocking the filesystem.
  */
-export function createCache(dir: string, ttlMs: number) {
+export function createCache(dir: string, ttlMs: number): CacheInstance {
   function cacheFile(key: string): string {
     // Sanitize the key so it is always a safe filesystem path component.
     return path.join(dir, key.replace(/[^a-z0-9-]/gi, "_") + ".json");

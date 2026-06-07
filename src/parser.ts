@@ -8,7 +8,7 @@ import type { Course, Schedule } from "./types.ts";
 export const normalizeSubject = (input: string): [string, number] => {
   const parts = input.trim().split(/\s+/);
   const courseID = Number.parseInt(parts[1], 10);
-  if (isNaN(courseID)) {
+  if (Number.isNaN(courseID)) {
     console.error(`normalizeSubject: could not parse course ID from "${input}"`);
   }
   return [parts[0].trim(), courseID];

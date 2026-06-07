@@ -19,7 +19,7 @@ describe("normalizeSubject", () => {
     const spy = vi.spyOn(console, "error").mockImplementation((msg) => errors.push(msg));
     const result = normalizeSubject("CSCI");
     spy.mockRestore();
-    expect(isNaN(result[1])).toBe(true);
+    expect(Number.isNaN(result[1])).toBe(true);
     expect(errors.length).toBe(1);
   });
 });
