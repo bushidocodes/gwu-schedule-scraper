@@ -1,6 +1,10 @@
 import { load } from "cheerio";
 import type { Course, Schedule } from "./types.ts";
 
+/**
+ * Splits a GWU subject cell (e.g. `"CSCI 1011"`) into `[department, courseID]`.
+ * Logs an error and returns `NaN` as the course ID when the number is absent.
+ */
 export const normalizeSubject = (input: string): [string, number] => {
   const parts = input.trim().split(/\s+/g);
   const courseID = Number.parseInt(parts[1], 10);
@@ -10,6 +14,14 @@ export const normalizeSubject = (input: string): [string, number] => {
   return [parts[0].trim(), courseID];
 };
 
+/**
+ * Parses the raw day-time and location strings from the GWU schedule HTML
+ * into an array of `Schedule` entries — one per meeting day.
+ *
+ * Multiple schedule blocks are separated by the literal string `"AND"`.
+ * Duplicate `(daytime, location)` pairs are silently de-duplicated via `Set`
+ * to avoid emitting redundant entries when the upstream HTML repeats a block.
+ */
 export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedule[] => {
   // A course listing may show multiple schedule entries separated by AND
   const dayTimes = dayTimesRaw.split("AND");
@@ -40,6 +52,10 @@ export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedu
   return results;
 };
 
+/**
+ * Splits a `"MM/DD/YY-MM/DD/YY"` date-range cell into `[startDate, endDate]`.
+ * Logs an error and returns `["<input>", ""]` when the hyphen separator is absent.
+ */
 export const parseFromTo = (input: string): [string, string] => {
   const parts = input.split("-").map((token) => token.trim());
   if (parts.length < 2 || !parts[1]) {

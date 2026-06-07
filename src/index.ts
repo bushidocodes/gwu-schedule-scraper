@@ -10,7 +10,7 @@ const USAGE = `Usage: node src/index.ts --term <termId> --subject <subjId> [--ca
 async function main(): Promise<void> {
   let term: string | undefined;
   let subject: string | undefined;
-  let campus: string;
+  let campus = "1"; // overridden by --campus flag if provided
   let output: string | undefined;
 
   try {
@@ -30,13 +30,11 @@ async function main(): Promise<void> {
     console.error(`Error: ${(err as Error).message}`);
     console.error(USAGE);
     process.exit(1);
-    return; // unreachable but satisfies control-flow analysis
   }
 
   if (!term || !subject) {
     console.error(USAGE);
     process.exit(1);
-    return; // unreachable
   }
 
   let html: string;
@@ -45,7 +43,7 @@ async function main(): Promise<void> {
   } catch (err) {
     console.error((err as Error).message);
     process.exit(1);
-    return; // unreachable
+    return;
   }
 
   const courses = parseCourses(html);

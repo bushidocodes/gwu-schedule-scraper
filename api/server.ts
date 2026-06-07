@@ -7,7 +7,14 @@ import { getCached, setCached } from "./cache.ts";
 
 const DEPARTMENTS = ["BME", "CE", "CSCI", "ECE", "EMSE", "MAE"];
 const DEFAULT_CAMPUS = "1";
-const PORT = parseInt(process.env.PORT ?? "", 10) || 3000;
+const rawPort = parseInt(process.env.PORT ?? "", 10);
+const PORT =
+  Number.isInteger(rawPort) && rawPort >= 1 && rawPort <= 65535
+    ? rawPort
+    : 3000;
+if (process.env.PORT !== undefined && PORT === 3000 && process.env.PORT !== "3000") {
+  console.warn(`[config] Invalid PORT="${process.env.PORT}" — must be 1–65535, falling back to 3000`);
+}
 
 // Maps Course (singular instructor, nullable times) to the shape the Android app expects
 interface ApiSection {
