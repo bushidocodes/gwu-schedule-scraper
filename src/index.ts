@@ -2,7 +2,7 @@ import fs from "fs";
 import { parseArgs } from "util";
 import { fetchSchedule } from "./scraper.ts";
 import { parseCourses } from "./parser.ts";
-import { toErrorMessage } from "./utils.ts";
+import { toErrorMessage, isValidTermId } from "./utils.ts";
 
 const USAGE = `Usage: node src/index.ts --term <termId> --subject <subjId> [--campus <campId>] [--output <file>] [--pretty]
   e.g. node src/index.ts --term 202503 --subject CSCI
@@ -41,6 +41,11 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
+  if (!isValidTermId(term)) {
+    console.error(`Error: invalid term ID "${term}". Expected format YYYYSS where SS is 01 (Spring), 02 (Summer), or 03 (Fall). E.g. 202601`);
+    process.exit(1);
+  }
+
   let html: string;
   try {
     html = await fetchSchedule(term, subject, campus);
@@ -59,7 +64,7 @@ async function main(): Promise<void> {
 
   if (output) {
     try {
-      fs.writeFileSync(output, json);
+      fs.writeFileSync(output, json + "\n");
     } catch (err) {
       console.error(`Failed to write to ${output}: ${toErrorMessage(err)}`);
       process.exit(1);

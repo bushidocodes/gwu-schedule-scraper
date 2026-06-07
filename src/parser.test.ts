@@ -148,6 +148,17 @@ describe("parseCourses", () => {
     expect(courses[0].schedule).toHaveLength(2);
   });
 
+  it("trims whitespace from section and name fields", () => {
+    const html = makeRow([
+      "OPEN", "12906", "CSCI 1011", "  10  ",
+      "  Introduction to Java  ", "3.00",
+      "Vidrine, C", "REMOTE INSTR", "T 06:10PM-08:40PM", "01/11/21-04/26/21",
+    ]);
+    const [course] = parseCourses(html);
+    expect(course.section).toBe("10");
+    expect(course.name).toBe("Introduction to Java");
+  });
+
   it("skips tables that are not course rows", () => {
     const html = `<table><tr><td>HEADER</td></tr></table>` + makeRow([
       "OPEN", "12906", "CSCI 1011", "10", "Intro to Java",

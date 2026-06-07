@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { toErrorMessage } from "./utils.ts";
+import { toErrorMessage, isValidTermId } from "./utils.ts";
 
 describe("toErrorMessage", () => {
   it("returns the message property for a real Error", () => {
@@ -28,5 +28,36 @@ describe("toErrorMessage", () => {
 
   it("converts a plain object via String()", () => {
     expect(toErrorMessage({ code: 500 })).toBe("[object Object]");
+  });
+});
+
+describe("isValidTermId", () => {
+  it("accepts valid Spring term IDs", () => {
+    expect(isValidTermId("202601")).toBe(true);
+    expect(isValidTermId("202501")).toBe(true);
+  });
+
+  it("accepts valid Summer term IDs", () => {
+    expect(isValidTermId("202602")).toBe(true);
+  });
+
+  it("accepts valid Fall term IDs", () => {
+    expect(isValidTermId("202603")).toBe(true);
+    expect(isValidTermId("203003")).toBe(true);
+  });
+
+  it("rejects an invalid semester code", () => {
+    expect(isValidTermId("202604")).toBe(false);
+    expect(isValidTermId("202600")).toBe(false);
+  });
+
+  it("rejects IDs with wrong year length", () => {
+    expect(isValidTermId("26601")).toBe(false);
+    expect(isValidTermId("2026001")).toBe(false);
+  });
+
+  it("rejects non-numeric input", () => {
+    expect(isValidTermId("abcd01")).toBe(false);
+    expect(isValidTermId("")).toBe(false);
   });
 });
