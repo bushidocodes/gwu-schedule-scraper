@@ -165,15 +165,23 @@ Set these environment variables in your hosting platform:
 ```
 gwu-schedule-scraper/
   src/
-    scraper.ts    # fetchSchedule() — HTTP fetch from my.gwu.edu
-    parser.ts     # parseCourses() — Cheerio HTML parser
-    types.ts      # Course, Schedule interfaces
-    utils.ts      # Shared helpers (toErrorMessage)
+    scraper.ts        # fetchSchedule() — HTTP fetch from my.gwu.edu
+    scraper.test.ts
+    parser.ts         # parseCourses() — Cheerio HTML parser
+    parser.test.ts
+    types.ts          # Course, Schedule interfaces
+    index.ts          # CLI entry point (--term, --subject, --pretty …)
+    index.test.ts
+    utils.ts          # Shared helpers (toErrorMessage, isValidTermId)
+    utils.test.ts
   api/
-    server.ts     # Express server (this package's entry point)
-    terms.ts      # Term list and validation
-    cache.ts      # File-based cache (createCache factory)
+    server.ts         # Express server (this package's entry point)
+    server.test.ts
+    terms.ts          # Term list and getTerms()
+    terms.test.ts
+    cache.ts          # File-based cache (createCache factory)
+    cache.test.ts
     package.json
     tsconfig.json
-  cache/          # Auto-created at runtime; git-ignored
+  cache/              # Auto-created at runtime; git-ignored
 ```

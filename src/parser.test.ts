@@ -74,9 +74,10 @@ describe("parseDayTimes", () => {
     result.forEach((s) => expect(s.location).toBe("Hall A & B"));
   });
 
-  it("returns null times for courses with no scheduled time", () => {
-    const result = parseDayTimes("", "");
-    expect(result).toEqual([]);
+  it("returns empty array via fast path when both inputs are empty", () => {
+    // Empty inputs mean async/TBA — the early-return avoids unnecessary Set/split work
+    expect(parseDayTimes("", "")).toEqual([]);
+    expect(parseDayTimes("  ", "  ")).toEqual([]);
   });
 
   it("parses times correctly with AM/PM suffix", () => {

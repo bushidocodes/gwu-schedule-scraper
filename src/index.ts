@@ -1,4 +1,4 @@
-import fs from "fs";
+import { writeFileSync } from "fs";
 import { parseArgs } from "util";
 import { fetchSchedule } from "./scraper.ts";
 import { parseCourses } from "./parser.ts";
@@ -66,6 +66,12 @@ async function main(): Promise<void> {
   }
   subject = subject.trim().toUpperCase();
 
+  // Validate campus is a positive integer (GWU uses numeric campus IDs)
+  if (!/^[0-9]+$/.test(campus)) {
+    console.error(`Error: invalid campus "${campus}". Expected a positive integer (default: 1).`);
+    process.exit(1);
+  }
+
   let html: string;
   try {
     html = await fetchSchedule(term, subject, campus);
@@ -77,14 +83,14 @@ async function main(): Promise<void> {
   const courses = parseCourses(html);
 
   if (courses.length === 0) {
-    console.error(`Warning: no courses found for term=${term} subject=${subject} campus=${campus}`);
+    console.warn(`Warning: no courses found for term=${term} subject=${subject} campus=${campus}`);
   }
 
   const json = pretty ? JSON.stringify(courses, null, 2) : JSON.stringify(courses);
 
   if (output) {
     try {
-      fs.writeFileSync(output, json + "\n");
+      writeFileSync(output, json + "\n");
     } catch (err) {
       console.error(`Failed to write to ${output}: ${toErrorMessage(err)}`);
       process.exit(1);
