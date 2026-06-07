@@ -3,7 +3,11 @@ import type { Course, Schedule } from "./types.ts";
 
 export const normalizeSubject = (input: string): [string, number] => {
   const parts = input.trim().split(/\s+/g);
-  return [parts[0].trim(), parseInt(parts[1])];
+  const courseID = parseInt(parts[1]);
+  if (isNaN(courseID)) {
+    console.error(`normalizeSubject: could not parse course ID from "${input}"`);
+  }
+  return [parts[0].trim(), courseID];
 };
 
 export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedule[] => {
