@@ -11,8 +11,8 @@ const SEMESTER_LABELS: Record<string, string> = {
 
 export function getTerms(): Term[] {
   const terms: Term[] = [];
-  // Cover 2024 through 2027
-  for (const year of [2024, 2025, 2026, 2027]) {
+  const currentYear = new Date().getFullYear();
+  for (let year = currentYear - 1; year <= currentYear + 2; year++) {
     for (const [code, label] of Object.entries(SEMESTER_LABELS)) {
       terms.push({ id: `${year}${code}`, label: `${label} ${year}` });
     }

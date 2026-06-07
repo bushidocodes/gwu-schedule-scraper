@@ -6,13 +6,15 @@
   "engines": { "node": ">=22" },
   "scripts": {
     "start": "node --experimental-strip-types server.ts",
-    "dev":   "node --watch --experimental-strip-types server.ts"
+    "dev":   "node --watch --experimental-strip-types server.ts",
+    "test":  "vitest run"
   },
   "dependencies": {
     "express": "^4.21.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/node": "^22.0.0"
+    "@types/node": "^22.0.0",
+    "vitest": "^3.0.0"
   }
 }
