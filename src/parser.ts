@@ -19,7 +19,7 @@ export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedu
     console.error("daytimes and locations did not have same number of tokens");
   }
 
-  const joinedValues = dayTimes.map((daytime, idx) => `${daytime}\x00${locations[idx]}`);
+  const joinedValues = dayTimes.map((daytime, idx) => `${daytime}\x00${locations[idx] ?? ""}`);
   const results: Schedule[] = [];
 
   Array.from(new Set(joinedValues)).forEach((str) => {
@@ -28,7 +28,7 @@ export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedu
     const days = daytime.match(/^[MTWRF]+/g);
     const dayChars = ((days && days[0]) || "").split("");
 
-    const time = daytime.match(/\d\d:\d\d[APM]+/g);
+    const time = daytime.match(/\d\d:\d\d(?:AM|PM)/g);
     const startTime = (time && time[0]) || null;
     const endTime = (time && time[1]) || null;
 

@@ -78,6 +78,21 @@ describe("parseDayTimes", () => {
     const result = parseDayTimes("", "");
     expect(result).toEqual([]);
   });
+
+  it("parses times correctly with AM/PM suffix", () => {
+    const result = parseDayTimes("T 09:00AM-09:50AM", "SEH 1300");
+    expect(result[0].startTime).toBe("09:00AM");
+    expect(result[0].endTime).toBe("09:50AM");
+  });
+
+  it("falls back to empty string location when arrays are mismatched length", () => {
+    // Regression: previously produced "undefined" string when locations array is shorter
+    const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const result = parseDayTimes("MWF 09:00AM-09:50AMAND T 06:10PM-08:40PM", "SEH 1300");
+    consoleSpy.mockRestore();
+    // locations shorter than dayTimes — second entry should have "" not "undefined"
+    expect(result.some((s) => s.location === "undefined")).toBe(false);
+  });
 });
 
 describe("parseCourses", () => {

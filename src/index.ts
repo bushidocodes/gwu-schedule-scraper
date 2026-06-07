@@ -8,38 +8,47 @@ const USAGE = `Usage: node src/index.ts --term <termId> --subject <subjId> [--ca
        node src/index.ts --term 202503 --subject CSCI --output courses.json`;
 
 async function main(): Promise<void> {
-  let values: { term?: string; subject?: string; campus?: string; output?: string };
+  let term: string | undefined;
+  let subject: string | undefined;
+  let campus: string;
+  let output: string | undefined;
+
   try {
-    ({ values } = parseArgs({
+    const { values } = parseArgs({
       options: {
         term:    { type: "string", short: "t" },
         subject: { type: "string", short: "s" },
         campus:  { type: "string", short: "c", default: "1" },
         output:  { type: "string", short: "o" },
       },
-    }));
+    });
+    term = values.term;
+    subject = values.subject;
+    campus = values.campus ?? "1";
+    output = values.output;
   } catch (err) {
     console.error(`Error: ${(err as Error).message}`);
     console.error(USAGE);
     process.exit(1);
+    return; // unreachable but satisfies control-flow analysis
   }
-
-  const { term, subject, campus, output } = values!;
 
   if (!term || !subject) {
     console.error(USAGE);
     process.exit(1);
+    return; // unreachable
   }
 
   let html: string;
   try {
-    html = await fetchSchedule(term, subject, campus!);
+    html = await fetchSchedule(term, subject, campus);
   } catch (err) {
     console.error((err as Error).message);
     process.exit(1);
+    return; // unreachable
   }
 
-  const courses = parseCourses(html!);
+  const courses = parseCourses(html);
 
   if (courses.length === 0) {
     console.error(`Warning: no courses found for term=${term} subject=${subject} campus=${campus}`);

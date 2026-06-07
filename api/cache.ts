@@ -1,9 +1,8 @@
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const CACHE_DIR = path.join(__dirname, "..", "cache");
+// import.meta.dirname is available in Node.js 21.2+ (engines require >=22)
+const CACHE_DIR = path.join(import.meta.dirname, "..", "cache");
 const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS ?? "") || 60 * 60 * 1000;
 
 function cacheFile(key: string): string {
