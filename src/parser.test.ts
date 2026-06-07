@@ -50,6 +50,12 @@ describe("parseDayTimes", () => {
     expect(result[1]).toMatchObject({ day: "F", location: "ROOM B" });
   });
 
+  it("preserves ampersands in location names", () => {
+    const result = parseDayTimes("MWF 09:00AM-09:50AM", "Hall A & B");
+    expect(result).toHaveLength(3);
+    result.forEach((s) => expect(s.location).toBe("Hall A & B"));
+  });
+
   it("returns null times for courses with no scheduled time", () => {
     const result = parseDayTimes("", "");
     expect(result).toEqual([]);
