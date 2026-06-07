@@ -85,6 +85,20 @@ describe("parseDayTimes", () => {
     expect(result[0].endTime).toBe("09:50AM");
   });
 
+  it("deduplicates identical (daytime, location) pairs", () => {
+    // If the upstream HTML repeats the exact same block (no surrounding spaces
+    // around AND), the Set de-duplication emits only one entry per day.
+    // Note: split("AND") keeps any surrounding spaces, so dedup only fires when
+    // the two tokens are byte-for-byte identical (no extra whitespace).
+    const result = parseDayTimes(
+      "MWF 09:00AM-09:50AMANDMWF 09:00AM-09:50AM",
+      "SEH 1300ANDSEH 1300",
+    );
+    // 3 unique days, not 6
+    expect(result).toHaveLength(3);
+    expect(result.map((s) => s.day)).toEqual(["M", "W", "F"]);
+  });
+
   it("falls back to empty string location when arrays are mismatched length", () => {
     // Regression: previously produced "undefined" string when locations array is shorter
     const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
