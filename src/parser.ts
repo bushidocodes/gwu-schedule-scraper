@@ -15,11 +15,11 @@ export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedu
     console.error("daytimes and locations did not have same number of tokens");
   }
 
-  const joinedValues = dayTimes.map((daytime, idx) => `${daytime}&${locations[idx]}`);
+  const joinedValues = dayTimes.map((daytime, idx) => `${daytime}\x00${locations[idx]}`);
   const results: Schedule[] = [];
 
   Array.from(new Set(joinedValues)).forEach((str) => {
-    const [daytime, location] = str.split("&").map((tok) => tok.trim());
+    const [daytime, location] = str.split("\x00").map((tok) => tok.trim());
 
     const days = daytime.match(/^[MTWRF]+/g);
     const dayChars = ((days && days[0]) || "").split("");
