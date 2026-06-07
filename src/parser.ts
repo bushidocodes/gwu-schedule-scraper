@@ -6,7 +6,7 @@ import type { Course, Schedule } from "./types.ts";
  * Logs an error and returns `NaN` as the course ID when the number is absent.
  */
 export const normalizeSubject = (input: string): [string, number] => {
-  const parts = input.trim().split(/\s+/g);
+  const parts = input.trim().split(/\s+/);
   const courseID = Number.parseInt(parts[1], 10);
   if (isNaN(courseID)) {
     console.error(`normalizeSubject: could not parse course ID from "${input}"`);
@@ -34,7 +34,7 @@ export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedu
   const joinedValues = dayTimes.map((daytime, idx) => `${daytime}\x00${locations[idx] ?? ""}`);
   const results: Schedule[] = [];
 
-  Array.from(new Set(joinedValues)).forEach((str) => {
+  for (const str of new Set(joinedValues)) {
     const [daytime, location] = str.split("\x00").map((tok) => tok.trim());
 
     const days = daytime.match(/^[MTWRF]+/);
@@ -47,7 +47,7 @@ export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedu
     for (const day of dayChars) {
       results.push({ location, day, startTime, endTime });
     }
-  });
+  }
 
   return results;
 };
@@ -76,8 +76,8 @@ export function parseCourses(html: string): Course[] {
 
     const crn = Number.parseInt(cells.eq(1).text(), 10);
     const subjectText = cells.eq(2).text();
-    const section = cells.eq(3).text();
-    const name = cells.eq(4).text();
+    const section = cells.eq(3).text().trim();
+    const name = cells.eq(4).text().trim();
     const credit = cells.eq(5).text().trim();
     const instructor = cells.eq(6).text().trim();
     const locationRaw = cells.eq(7).text();

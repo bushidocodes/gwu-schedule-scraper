@@ -110,8 +110,7 @@ app.get("/terms/:termId/sections", async (req, res) => {
       const results = await Promise.allSettled(DEPARTMENTS.map((d) => fetchDept(termId, d)));
       results.forEach((r, i) => {
         if (r.status === "rejected") {
-          const msg = r.reason instanceof Error ? r.reason.message : String(r.reason);
-          console.error(`[error] dept=${DEPARTMENTS[i]} term=${termId}: ${msg}`);
+          console.error(`[error] dept=${DEPARTMENTS[i]} term=${termId}: ${toErrorMessage(r.reason)}`);
         }
       });
       const combined = results

@@ -3,6 +3,10 @@ export interface Term {
   label: string;
 }
 
+// Re-exported from src/utils.ts so callers that already import from this
+// module don't need a separate import.
+export { isValidTermId } from "../src/utils.ts";
+
 const SEMESTER_LABELS: Record<string, string> = {
   "01": "Spring",
   "02": "Summer",
@@ -19,8 +23,4 @@ export function getTerms(): Term[] {
   }
   // Most recent first
   return terms.reverse();
-}
-
-export function isValidTermId(id: string): boolean {
-  return /^\d{4}(?:01|02|03)$/.test(id);
 }
