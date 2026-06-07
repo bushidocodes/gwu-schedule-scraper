@@ -159,4 +159,17 @@ describe("parseCourses", () => {
   it("returns an empty array for HTML with no course tables", () => {
     expect(parseCourses("<html><body><p>No courses</p></body></html>")).toEqual([]);
   });
+
+  it("gracefully handles a row with fewer than 10 cells", () => {
+    // Rows that are too short (e.g. header rows with OPEN/CLOSED status but
+    // missing columns) should not throw; parseCourses should still return [].
+    const html = `<table><tr><td>OPEN</td><td>99999</td></tr></table>`;
+    expect(() => parseCourses(html)).not.toThrow();
+    // The short row won't parse into a valid course (empty text fields),
+    // but the function must not crash.
+    const courses = parseCourses(html);
+    expect(courses).toHaveLength(1); // it does attempt to parse it
+    expect(courses[0].crn).toBe(99999);
+    expect(courses[0].department).toBe(""); // empty subject cell → empty dept
+  });
 });
