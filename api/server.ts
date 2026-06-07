@@ -23,11 +23,13 @@ interface ApiSection {
   endDate: string;
 }
 
-function toApiSection(course: Course): ApiSection {
+export function toApiSection(course: Course): ApiSection {
+  // Destructure `instructor` out so it is not leaked into the API response alongside `instructors`
+  const { instructor, schedule, ...rest } = course;
   return {
-    ...course,
-    instructors: course.instructor ? [course.instructor] : [],
-    schedule: course.schedule.map((s) => ({
+    ...rest,
+    instructors: instructor ? [instructor] : [],
+    schedule: schedule.map((s) => ({
       location: s.location,
       day: s.day,
       startTime: s.startTime ?? "",
@@ -58,6 +60,11 @@ app.use(express.json());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  if (req.method === "OPTIONS") {
+    res.sendStatus(204);
+    return;
+  }
   next();
 });
 
@@ -106,10 +113,16 @@ app.get("/terms/:termId/sections", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`gwu-schedule-api listening on http://localhost:${PORT}`);
-  console.log(`Endpoints:`);
-  console.log(`  GET /terms`);
-  console.log(`  GET /terms/:termId/sections`);
-  console.log(`  GET /terms/:termId/sections?dept=CSCI`);
-});
+// Only start the server when this file is the entry point, not when imported by tests.
+// import.meta.filename is available in Node.js 21.2+ (engines require >=22)
+if (import.meta.filename === process.argv[1]) {
+  app.listen(PORT, () => {
+    console.log(`gwu-schedule-api listening on http://localhost:${PORT}`);
+    console.log(`Endpoints:`);
+    console.log(`  GET /terms`);
+    console.log(`  GET /terms/:termId/sections`);
+    console.log(`  GET /terms/:termId/sections?dept=CSCI`);
+  });
+}
+
+export { app };
