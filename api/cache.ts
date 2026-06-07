@@ -3,7 +3,7 @@ import path from "path";
 
 // import.meta.dirname is available in Node.js 21.2+ (engines require >=22)
 const CACHE_DIR = path.join(import.meta.dirname, "..", "cache");
-const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS ?? "") || 60 * 60 * 1000;
+const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS ?? "", 10) || 60 * 60 * 1000;
 
 function cacheFile(key: string): string {
   // Sanitize key for filesystem
@@ -22,6 +22,12 @@ export function getCached<T>(key: string): T | null {
 }
 
 export function setCached<T>(key: string, data: T): void {
-  fs.mkdirSync(CACHE_DIR, { recursive: true });
-  fs.writeFileSync(cacheFile(key), JSON.stringify(data));
+  try {
+    fs.mkdirSync(CACHE_DIR, { recursive: true });
+    fs.writeFileSync(cacheFile(key), JSON.stringify(data));
+  } catch (err) {
+    // A write failure should not cause the caller to return an error response —
+    // the data was fetched successfully; just log and carry on.
+    console.error(`[cache] failed to write "${key}": ${(err as Error).message}`);
+  }
 }
