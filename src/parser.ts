@@ -43,7 +43,7 @@ export const parseDayTimes = (dayTimesRaw: string, locationsRaw: string): Schedu
     const days = daytime.match(/^[MTWRF]+/);
     const dayChars = ((days && days[0]) || "").split("");
 
-    const time = daytime.match(/\d\d:\d\d(?:AM|PM)/g);
+    const time = daytime.match(/\d{1,2}:\d\d(?:AM|PM)/g);
     const startTime = (time && time[0]) || null;
     const endTime = (time && time[1]) || null;
 
