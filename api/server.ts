@@ -101,40 +101,41 @@ app.get("/terms/:termId/sections", async (req, res) => {
     return;
   }
 
-  try {
-    let sections: ApiSection[];
-    if (dept) {
-      sections = await fetchDept(termId, dept);
-    } else {
-      // Fetch all departments in parallel and dedupe by CRN
-      const results = await Promise.allSettled(DEPARTMENTS.map((d) => fetchDept(termId, d)));
-      results.forEach((r, i) => {
-        if (r.status === "rejected") {
-          console.error(`[error] dept=${DEPARTMENTS[i]} term=${termId}: ${toErrorMessage(r.reason)}`);
-        }
-      });
-      const combined = results
-        .filter((r): r is PromiseFulfilledResult<ApiSection[]> => r.status === "fulfilled")
-        .flatMap((r) => r.value);
-      const seen = new Set<number>();
-      sections = combined.filter((s) => {
-        if (seen.has(s.crn)) return false;
-        seen.add(s.crn);
-        return true;
-      });
-    }
-    res.json({ sections });
-  } catch (err) {
-    const msg = toErrorMessage(err);
-    console.error(`[error] ${msg}`);
-    res.status(502).json({ error: `Failed to fetch from GWU: ${msg}` });
+  let sections: ApiSection[];
+  if (dept) {
+    sections = await fetchDept(termId, dept);
+  } else {
+    // Fetch all departments in parallel and dedupe by CRN
+    const results = await Promise.allSettled(DEPARTMENTS.map((d) => fetchDept(termId, d)));
+    results.forEach((r, i) => {
+      if (r.status === "rejected") {
+        console.error(`[error] dept=${DEPARTMENTS[i]} term=${termId}: ${toErrorMessage(r.reason)}`);
+      }
+    });
+    const combined = results
+      .filter((r): r is PromiseFulfilledResult<ApiSection[]> => r.status === "fulfilled")
+      .flatMap((r) => r.value);
+    const seen = new Set<number>();
+    sections = combined.filter((s) => {
+      if (seen.has(s.crn)) return false;
+      seen.add(s.crn);
+      return true;
+    });
   }
+  res.json({ sections });
 });
 
 // Catch-all: unknown routes return JSON 404 instead of Express's default HTML response
 app.use((req, res) => {
   console.log(`[404] ${req.method} ${req.path}`);
   res.status(404).json({ error: "Not found" });
+});
+
+// Express v5 automatically forwards rejected async promises to this error handler
+app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+  const msg = toErrorMessage(err);
+  console.error(`[error] ${msg}`);
+  res.status(502).json({ error: `Failed to fetch from GWU: ${msg}` });
 });
 
 // Only start the server when this file is the entry point, not when imported by tests.
