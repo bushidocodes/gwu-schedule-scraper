@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "REST API wrapping the GWU schedule scraper",
   "type": "module",
+  "packageManager": "pnpm@11.5.0",
   "engines": { "node": ">=22" },
   "scripts": {
     "start": "node --experimental-strip-types server.ts",
