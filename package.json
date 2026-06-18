@@ -4,6 +4,7 @@
   "description": "CLI tool and REST API for scraping GWU course schedule data",
   "main": "src/index.ts",
   "type": "module",
+  "packageManager": "pnpm@11.5.0",
   "engines": {
     "node": ">=22"
   },
