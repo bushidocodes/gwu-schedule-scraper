@@ -1,4 +1,3 @@
-import { load } from "cheerio";
 import type { Course, Schedule } from "./types.ts";
 
 /**
@@ -68,33 +67,77 @@ export const parseFromTo = (input: string): [string, string] => {
   return [parts[0], parts[1]];
 };
 
+/** The handful of HTML entities GWU's schedule printer actually emits. */
+const NAMED_ENTITIES: Record<string, string> = {
+  amp: "&",
+  lt: "<",
+  gt: ">",
+  quot: '"',
+  apos: "'",
+  nbsp: " ",
+  copy: "©",
+};
+
+/** Decodes named (`&amp;`) and numeric (`&#39;`, `&#x27;`) HTML entities. */
+const decodeEntities = (input: string): string =>
+  input.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (match, entity: string) => {
+    if (entity[0] === "#") {
+      const codePoint =
+        entity[1] === "x" || entity[1] === "X"
+          ? Number.parseInt(entity.slice(2), 16)
+          : Number.parseInt(entity.slice(1), 10);
+      return Number.isNaN(codePoint) ? match : String.fromCodePoint(codePoint);
+    }
+    return NAMED_ENTITIES[entity] ?? match;
+  });
+
+/**
+ * Extracts the visible text of a table cell, mirroring the behaviour the parser
+ * previously relied on from cheerio's `.text()`: nested tags (e.g. `<span>`,
+ * `<a>`, `<br>`) are stripped and HTML entities are decoded, concatenating all
+ * descendant text. Whitespace is preserved; callers trim where needed.
+ */
+const cellText = (innerHtml: string): string => decodeEntities(innerHtml.replace(/<[^>]*>/g, ""));
+
 /**
  * Parses the full HTML response from the GWU schedule printer into an array
  * of `Course` objects.  Each `<table>` whose first row starts with `"OPEN"` or
  * `"CLOSED"` is treated as a course row; all other tables are skipped.
+ *
+ * The GWU markup nests course tables inside layout tables, so — matching the
+ * previous cheerio traversal — every `<table>` is visited and the first
+ * descendant `<tr>` (and its `<td>` cells) is read; non-course tables fall out
+ * via the OPEN/CLOSED status check.
  */
 export const parseCourses = (html: string): Course[] => {
-  const $ = load(html);
   const courses: Course[] = [];
+  const tableOpen = /<table\b/gi;
+  const trOpen = /<tr\b/i;
+  const rowEnd = /<\/tr>/i;
+  const cellMatch = /<td\b[^>]*>([\s\S]*?)<\/td>/gi;
 
-  for (const courseNode of $("table").toArray()) {
-    const cells = $(courseNode).find("tr").eq(0).find("td");
-    const status = cells.eq(0).text();
+  for (let table = tableOpen.exec(html); table !== null; table = tableOpen.exec(html)) {
+    // First descendant <tr> after this table's opening tag.
+    const afterTable = html.slice(table.index);
+    const trStart = afterTable.search(trOpen);
+    if (trStart < 0) continue;
+
+    const rowHtml = afterTable.slice(trStart);
+    const trEnd = rowHtml.search(rowEnd);
+    const cellsHtml = trEnd < 0 ? rowHtml : rowHtml.slice(0, trEnd);
+
+    const cells = [...cellsHtml.matchAll(cellMatch)].map((cell) => cellText(cell[1]));
+    const status = cells[0] ?? "";
     if (status !== "OPEN" && status !== "CLOSED") continue;
 
-    const crn = Number.parseInt(cells.eq(1).text(), 10);
-    const subjectText = cells.eq(2).text();
-    const section = cells.eq(3).text().trim();
-    const name = cells.eq(4).text().trim();
-    const credit = cells.eq(5).text().trim();
-    const instructor = cells.eq(6).text().trim();
-    const locationRaw = cells.eq(7).text();
-    const dayTimeRaw = cells.eq(8).text();
-    const fromTo = cells.eq(9).text();
-
-    const [department, courseID] = normalizeSubject(subjectText);
-    const schedule = parseDayTimes(dayTimeRaw, locationRaw);
-    const [startDate, endDate] = parseFromTo(fromTo);
+    const crn = Number.parseInt(cells[1] ?? "", 10);
+    const [department, courseID] = normalizeSubject(cells[2] ?? "");
+    const section = (cells[3] ?? "").trim();
+    const name = (cells[4] ?? "").trim();
+    const credit = (cells[5] ?? "").trim();
+    const instructor = (cells[6] ?? "").trim();
+    const schedule = parseDayTimes(cells[8] ?? "", cells[7] ?? "");
+    const [startDate, endDate] = parseFromTo(cells[9] ?? "");
 
     courses.push({ crn, department, courseID, section, name, credit, instructor, schedule, startDate, endDate });
   }

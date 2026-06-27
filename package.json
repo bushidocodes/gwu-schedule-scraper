@@ -15,9 +15,6 @@
   },
   "author": "bushidocodes",
   "license": "ISC",
-  "dependencies": {
-    "cheerio": "^1.2.0"
-  },
   "devDependencies": {
     "@types/node": "^26.0.0",
     "typescript": "^6.0.3",
