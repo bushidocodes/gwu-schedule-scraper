@@ -92,12 +92,30 @@ const decodeEntities = (input: string): string =>
   });
 
 /**
+ * Removes HTML tags from a fragment by scanning character-by-character: every
+ * run from a `<` to the next `>` (or end of input) is dropped. A single-pass
+ * regex like `/<[^>]*>/g` would leave an unterminated `<tag` (no closing `>`)
+ * intact, so the scan is used instead — it is more robust and concatenates the
+ * remaining text exactly as cheerio's `.text()` did.
+ */
+const stripTags = (html: string): string => {
+  let text = "";
+  let inTag = false;
+  for (const char of html) {
+    if (char === "<") inTag = true;
+    else if (char === ">") inTag = false;
+    else if (!inTag) text += char;
+  }
+  return text;
+};
+
+/**
  * Extracts the visible text of a table cell, mirroring the behaviour the parser
  * previously relied on from cheerio's `.text()`: nested tags (e.g. `<span>`,
  * `<a>`, `<br>`) are stripped and HTML entities are decoded, concatenating all
  * descendant text. Whitespace is preserved; callers trim where needed.
  */
-const cellText = (innerHtml: string): string => decodeEntities(innerHtml.replace(/<[^>]*>/g, ""));
+const cellText = (innerHtml: string): string => decodeEntities(stripTags(innerHtml));
 
 /**
  * Parses the full HTML response from the GWU schedule printer into an array
