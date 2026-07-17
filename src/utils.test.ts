@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { toErrorMessage, isValidTermId } from "./utils.ts";
+import { describe, expect, it } from "vitest";
+import { isValidTermId, toErrorMessage } from "./utils.ts";
 
 describe("toErrorMessage", () => {
   it("returns the message property for a real Error", () => {

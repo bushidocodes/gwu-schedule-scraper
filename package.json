@@ -11,11 +11,14 @@
   "scripts": {
     "test": "vitest run",
     "start": "node --experimental-strip-types src/index.ts",
-    "typecheck": "tsc --noEmit && tsc --noEmit --project api/tsconfig.json"
+    "typecheck": "tsc --noEmit && tsc --noEmit --project api/tsconfig.json",
+    "lint": "biome check .",
+    "format": "biome format --write ."
   },
   "author": "bushidocodes",
   "license": "ISC",
   "devDependencies": {
+    "@biomejs/biome": "2.5.3",
     "@types/node": "^26.1.1",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"

@@ -1,8 +1,8 @@
 import { writeFileSync } from "fs";
 import { parseArgs } from "util";
-import { fetchSchedule } from "./scraper.ts";
 import { parseCourses } from "./parser.ts";
-import { toErrorMessage, isValidTermId } from "./utils.ts";
+import { fetchSchedule } from "./scraper.ts";
+import { isValidTermId, toErrorMessage } from "./utils.ts";
 
 const USAGE = `Usage: node src/index.ts --term <termId> --subject <subjId> [--campus <campId>] [--output <file>] [--pretty]
   e.g. node src/index.ts --term 202503 --subject CSCI
@@ -26,12 +26,12 @@ async function main(): Promise<void> {
   try {
     const { values } = parseArgs({
       options: {
-        term:    { type: "string",  short: "t" },
-        subject: { type: "string",  short: "s" },
-        campus:  { type: "string",  short: "c", default: "1" },
-        output:  { type: "string",  short: "o" },
-        pretty:  { type: "boolean", short: "p", default: false },
-        help:    { type: "boolean", short: "h", default: false },
+        term: { type: "string", short: "t" },
+        subject: { type: "string", short: "s" },
+        campus: { type: "string", short: "c", default: "1" },
+        output: { type: "string", short: "o" },
+        pretty: { type: "boolean", short: "p", default: false },
+        help: { type: "boolean", short: "h", default: false },
       },
     });
     if (values.help) {
@@ -55,13 +55,17 @@ async function main(): Promise<void> {
   }
 
   if (!isValidTermId(term)) {
-    console.error(`Error: invalid term ID "${term}". Expected format YYYYSS where SS is 01 (Spring), 02 (Summer), or 03 (Fall). E.g. 202601`);
+    console.error(
+      `Error: invalid term ID "${term}". Expected format YYYYSS where SS is 01 (Spring), 02 (Summer), or 03 (Fall). E.g. 202601`,
+    );
     process.exit(1);
   }
 
   // Validate subject is a non-empty string of letters (catches accidental empty-string or numeric values)
   if (!/^[A-Za-z]{1,10}$/.test(subject.trim())) {
-    console.error(`Error: invalid subject "${subject}". Expected a department code like CSCI, ECE, or BME.`);
+    console.error(
+      `Error: invalid subject "${subject}". Expected a department code like CSCI, ECE, or BME.`,
+    );
     process.exit(1);
   }
   subject = subject.trim().toUpperCase();

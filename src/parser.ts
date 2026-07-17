@@ -157,7 +157,18 @@ export const parseCourses = (html: string): Course[] => {
     const schedule = parseDayTimes(cells[8] ?? "", cells[7] ?? "");
     const [startDate, endDate] = parseFromTo(cells[9] ?? "");
 
-    courses.push({ crn, department, courseID, section, name, credit, instructor, schedule, startDate, endDate });
+    courses.push({
+      crn,
+      department,
+      courseID,
+      section,
+      name,
+      credit,
+      instructor,
+      schedule,
+      startDate,
+      endDate,
+    });
   }
 
   return courses;

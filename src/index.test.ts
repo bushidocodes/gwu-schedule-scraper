@@ -4,7 +4,7 @@
  */
 import { spawnSync } from "child_process";
 import { fileURLToPath } from "url";
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 const NODE = process.execPath;
 const CLI = fileURLToPath(new URL("./index.ts", import.meta.url));
