@@ -1,21 +1,20 @@
 import express from "express";
-import { fetchSchedule } from "../src/scraper.ts";
 import { parseCourses } from "../src/parser.ts";
+import { fetchSchedule } from "../src/scraper.ts";
 import type { Course } from "../src/types.ts";
 import { toErrorMessage } from "../src/utils.ts";
-import { getTerms, isValidTermId } from "./terms.ts";
 import { getCached, setCached } from "./cache.ts";
+import { getTerms, isValidTermId } from "./terms.ts";
 
 /** SEAS department codes supported by the GWU schedule scraper. */
 export const DEPARTMENTS = ["BME", "CE", "CSCI", "ECE", "EMSE", "MAE"] as const;
 const DEFAULT_CAMPUS = "1";
 const rawPort = Number.parseInt(process.env.PORT ?? "", 10);
-const PORT =
-  Number.isInteger(rawPort) && rawPort >= 1 && rawPort <= 65535
-    ? rawPort
-    : 3000;
+const PORT = Number.isInteger(rawPort) && rawPort >= 1 && rawPort <= 65535 ? rawPort : 3000;
 if (process.env.PORT !== undefined && PORT === 3000 && process.env.PORT !== "3000") {
-  console.warn(`[config] Invalid PORT="${process.env.PORT}" — must be 1–65535, falling back to 3000`);
+  console.warn(
+    `[config] Invalid PORT="${process.env.PORT}" — must be 1–65535, falling back to 3000`,
+  );
 }
 
 /** The shape returned by `/terms/:termId/sections`. */
@@ -92,12 +91,16 @@ app.get("/terms/:termId/sections", async (req, res) => {
   const dept = (req.query.dept as string | undefined)?.toUpperCase();
 
   if (!isValidTermId(termId)) {
-    res.status(400).json({ error: `Invalid termId: ${termId}. Expected format YYYYSS (e.g. 202601)` });
+    res
+      .status(400)
+      .json({ error: `Invalid termId: ${termId}. Expected format YYYYSS (e.g. 202601)` });
     return;
   }
 
   if (dept && !(DEPARTMENTS as readonly string[]).includes(dept)) {
-    res.status(400).json({ error: `Unknown department: ${dept}. Supported: ${DEPARTMENTS.join(", ")}` });
+    res
+      .status(400)
+      .json({ error: `Unknown department: ${dept}. Supported: ${DEPARTMENTS.join(", ")}` });
     return;
   }
 

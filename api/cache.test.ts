@@ -1,7 +1,7 @@
 import fs, { mkdtempSync, rmSync } from "fs";
 import { tmpdir } from "os";
 import { join } from "path";
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createCache } from "./cache.ts";
 
 let dir: string;
@@ -69,7 +69,9 @@ describe("setCached", () => {
     const mkdirSpy = vi.spyOn(fs, "mkdirSync").mockImplementation(() => {
       throw new Error("EACCES: permission denied");
     });
-    const errorSpy = vi.spyOn(console, "error").mockImplementation((msg: string) => errors.push(msg));
+    const errorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation((msg: string) => errors.push(msg));
     expect(() => setCached("k", "data")).not.toThrow();
     mkdirSpy.mockRestore();
     errorSpy.mockRestore();

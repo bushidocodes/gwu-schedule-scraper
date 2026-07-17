@@ -60,9 +60,12 @@ const CACHE_DIR = path.join(import.meta.dirname, "..", "cache");
 
 const rawTtl = Number.parseInt(process.env.CACHE_TTL_MS ?? "", 10);
 if (process.env.CACHE_TTL_MS !== undefined && (Number.isNaN(rawTtl) || rawTtl <= 0)) {
-  console.warn(`[cache] CACHE_TTL_MS="${process.env.CACHE_TTL_MS}" is not a positive integer — using default 1 hour`);
+  console.warn(
+    `[cache] CACHE_TTL_MS="${process.env.CACHE_TTL_MS}" is not a positive integer — using default 1 hour`,
+  );
 }
 const CACHE_TTL_MS = Number.isFinite(rawTtl) && rawTtl > 0 ? rawTtl : 60 * 60 * 1000;
 
 const { getCached, setCached } = createCache(CACHE_DIR, CACHE_TTL_MS);
+
 export { getCached, setCached };

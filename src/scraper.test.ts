@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
-import { fetchSchedule, FETCH_TIMEOUT_MS } from "./scraper.ts";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { FETCH_TIMEOUT_MS, fetchSchedule } from "./scraper.ts";
 
 afterEach(() => {
   vi.unstubAllGlobals();
@@ -27,9 +27,7 @@ describe("fetchSchedule", () => {
       return { ok: true, text: async () => "" };
     });
     await fetchSchedule("202603", "ECE", "2");
-    expect(calls[0]).toBe(
-      "https://my.gwu.edu/mod/pws/print.cfm?campId=2&termId=202603&subjId=ECE",
-    );
+    expect(calls[0]).toBe("https://my.gwu.edu/mod/pws/print.cfm?campId=2&termId=202603&subjId=ECE");
   });
 
   it("URL-encodes each parameter", async () => {
